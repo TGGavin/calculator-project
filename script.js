@@ -1,15 +1,11 @@
-function addition(num, num2) {
-    return num + num2
-}
 
-function subtract(num, num2) {
-    return num - num2
-}
+    const operators = {
+        add: (a, b) => a + b,
+        minus: (a, b) => a - b,
+        multiply: (a, b) => a * b,
+        divide: (a, b) => a / b
+    }
 
-function multiply(num, num2) {
-    return num * num2
-}
-
-function divide(num, num2) {
-    return num / num2
-}
+    function operation(num, operator, num2) {
+        
+    }
