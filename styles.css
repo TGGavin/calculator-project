@@ -1,9 +1,18 @@
-#calc,
+#calc-container {
+    border: solid black 12px;
+    display: flex;
+    flex-direction: column;
+    width: min-content;
+    justify-self: center;
+    border-radius: 16px;
+}
+
+#calc-btn-container,
 .digit-btn-display > .seperator {
     display: flex
 }
 
-#calc {
+#calc-btn-container {
     justify-content: center;
 }
 
@@ -23,4 +32,13 @@ font-size: 80px;
     width: 130px;
     height: 100%;
     font-size: 50px;
+}
+
+#calc-screen {
+    display: flex;
+    justify-self: center;
+    font-size: 90px;
+    height: 100px;
+    width: 100%;
+    border-bottom: solid 6px black;
 }
