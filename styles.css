@@ -1,0 +1,26 @@
+#calc,
+.digit-btn-display > .seperator {
+    display: flex
+}
+
+#calc {
+    justify-content: center;
+}
+
+
+.digit-btn-display > .seperator > .calc-btn {    
+height: 124px;
+width: 130px;
+font-size: 80px;
+}
+
+.opera-btn-display {
+    display: flex;
+    flex-direction: column;
+}
+
+.opera-btn-display > button {
+    width: 130px;
+    height: 100%;
+    font-size: 50px;
+}
