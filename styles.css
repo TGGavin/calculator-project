@@ -41,4 +41,5 @@ font-size: 80px;
     height: 100px;
     width: 100%;
     border-bottom: solid 6px black;
+    flex-direction: row-reverse ;
 }
