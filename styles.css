@@ -37,9 +37,10 @@ font-size: 80px;
 #calc-screen {
     display: flex;
     justify-self: center;
-    font-size: 90px;
-    height: 100px;
-    width: 100%;
+    font-size: 65px;
+    height: auto;
+    width: 512px;
     border-bottom: solid 6px black;
-    flex-direction: row-reverse ;
+    flex-direction: row-reverse;
+    padding: 10px 4px 0px 4px;
 }
