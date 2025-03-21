@@ -1,4 +1,4 @@
-#calc-container {
+.calc-container {
     border: solid black 12px;
     display: flex;
     flex-direction: column;
@@ -7,17 +7,17 @@
     border-radius: 16px;
 }
 
-#calc-btn-container,
-.digit-btn-display > .seperator {
+.calc-btn-container,
+.digit-btn-display > div {
     display: flex
 }
 
-#calc-btn-container {
+.calc-btn-container {
     justify-content: center;
 }
 
 
-.digit-btn-display > .seperator > .calc-btn {    
+.digit-btn-display > div > button {    
 height: 124px;
 width: 130px;
 font-size: 80px;
@@ -34,10 +34,10 @@ font-size: 80px;
     font-size: 50px;
 }
 
-#calc-screen {
+.calc-screen {
     display: flex;
     justify-self: center;
-    font-size: 65px;
+    font-size: 60px;
     height: auto;
     width: 512px;
     border-bottom: solid 6px black;
