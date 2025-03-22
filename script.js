@@ -1,14 +1,8 @@
-// used to update display, (later)
-// let screenValues = {
-//     operator: "No Operator",
-//     operand1: "No Number1",
-//     operand2: "No Number2"
-// }
 
 const zeroBtn = document.querySelector(".zero-btn")
 const oneBtn = document.querySelector(".one-btn")
 const twoBtn = document.querySelector(".two-btn")
-const threeBtn = document.querySelector(".three.btn")
+const threeBtn = document.querySelector(".three-btn")
 const fourBtn = document.querySelector(".four-btn")
 const fiveBtn = document.querySelector(".five-btn")
 const sixBtn = document.querySelector(".six-btn")
@@ -25,9 +19,75 @@ const addBtn = document.querySelector(".add-btn")
 const clearBtn = document.querySelector(".clear-btn")
 const equalsBtn = document.querySelector(".equal-btn")
 
+const calcBtnContainer = document.querySelector(".calc-btn-container")
+calcBtnContainer.addEventListener("click", (e) => {
+    target = e.target
+    switch (target) {
+        case zeroBtn:
+            console.log(target);
+            break;
+        case oneBtn:
+            console.log(target);
+            break;
+        case twoBtn:
+            console.log(target);
+            break;
+        case threeBtn:
+            console.log(target);
+            break;
+        case fourBtn:
+            console.log(target);
+            break;
+        case fiveBtn:
+            console.log(target);
+            break;
+        case sixBtn:
+            console.log(target);
+            break;
+        case svnBtn:
+            console.log(target);
+            break;
+        case eightBtn:
+            console.log(target);
+            break;
+        case nineBtn:
+            console.log(target);
+            break;
+        case negateBtn:
+            console.log(target);
+            break;
+        case delBtn:
+            console.log(target);
+            break;
+        case decimalBtn:
+            console.log(target);
+            break;
+        case divideBtn:
+            console.log(target);
+            break;
+        case multiplyBtn:
+            console.log(target);
+            break;
+        case addBtn:
+            console.log(target);
+            break;
+        case subtractBtn:
+            console.log(target);
+            break;
+        case clearBtn:
+            console.log(target);
+            break;
+        case equalsBtn:
+            console.log(target);
+            break;
+        // default:
+    }
 
-const calScreen = document.querySelector("#calc-screen")
-function disUpdate(num) {
+})
+
+
+const calScreen = document.querySelector(".calc-screen")
+function displayUpdate(num) {
     return calScreen.textContent = num
 }
 
@@ -36,11 +96,9 @@ const operators = {
     minus: (a, b) => a - b,
     multiply: (a, b) => a * b,
     divide: (a, b) => a / b
+    // add negate
 }
 
 function operation(operator, num, num2) {
-    // screenValues["operator"] = operator
-    // screenValues["operand1"] = num
-    // screenValues["operand2"] = num2
     return operators[operator](num, num2)
 }
