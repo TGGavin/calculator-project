@@ -1,4 +1,26 @@
 
+let mainOpStr = "0"
+// let mainOpVal = parseInt(mainOpStr)
+
+const lowerCal = document.querySelector(".lower-cal-num")
+function screenUpdate(val) {
+    return lowerCal.textContent = val
+}
+
+const operators = {
+    add: (a, b) => a + b,
+    minus: (a, b) => a - b,
+    multiply: (a, b) => a * b,
+    divide: (a, b) => a / b
+    // add negate
+}
+
+function operation(operator, num, num2) {
+    return operators[operator](num, num2)
+}
+
+
+// List of all calculator buttons
 const zeroBtn = document.querySelector(".zero-btn")
 const oneBtn = document.querySelector(".one-btn")
 const twoBtn = document.querySelector(".two-btn")
@@ -27,7 +49,7 @@ calcBtnContainer.addEventListener("click", (e) => {
             console.log(target);
             break;
         case oneBtn:
-            console.log(target);
+        console.log(target);
             break;
         case twoBtn:
             console.log(target);
@@ -84,21 +106,3 @@ calcBtnContainer.addEventListener("click", (e) => {
     }
 
 })
-
-
-const calScreen = document.querySelector(".calc-screen")
-function displayUpdate(num) {
-    return calScreen.textContent = num
-}
-
-const operators = {
-    add: (a, b) => a + b,
-    minus: (a, b) => a - b,
-    multiply: (a, b) => a * b,
-    divide: (a, b) => a / b
-    // add negate
-}
-
-function operation(operator, num, num2) {
-    return operators[operator](num, num2)
-}
