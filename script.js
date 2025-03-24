@@ -1,11 +1,33 @@
+//  TO DO LIST 
+//  Make upper-cal-num disappear when not in use
+//  Make functioning calculator before visuals
 
-let mainOpStr = "0"
+
+let calNum1 = 0
+let calOp;
+let calNum2 = 0
+// let mainOpStr = 0
 // let mainOpVal = parseInt(mainOpStr)
 
 const lowerCal = document.querySelector(".lower-cal-num")
-function screenUpdate(val) {
-    return lowerCal.textContent = val
+
+const calDis = () => lowerCal.textContent = calNum1
+function zeroArbiter(strungNum) {
+    let startsWithZero = strungNum.startsWith("0")
+    if (strungNum.length > 1 && startsWithZero) {
+        return strungNum.replace("0", "") 
+    } else {
+        return strungNum
+    }
 }
+
+// will make spans appear and disappear later
+// function TBD() {
+    // const screen = document.querySelector(".cal-screen")
+    // const upper = document.querySelector(".cal-upper-content")
+    // screen.removeChild(upper)
+    // screen.appendChild(upper)
+// }
 
 const operators = {
     add: (a, b) => a + b,
@@ -46,16 +68,20 @@ calcBtnContainer.addEventListener("click", (e) => {
     target = e.target
     switch (target) {
         case zeroBtn:
-            console.log(target);
+            
+            console.log(calNum1);            
             break;
         case oneBtn:
-        console.log(target);
+            calNum1 += 1;
+            console.log(calNum1);
             break;
         case twoBtn:
-            console.log(target);
+            calNum1 += 2
+            console.log(calNum1);
             break;
         case threeBtn:
-            console.log(target);
+            calNum1 += 3
+            console.log(calNum1);
             break;
         case fourBtn:
             console.log(target);
