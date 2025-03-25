@@ -1,4 +1,4 @@
-//  TO DO LIST 
+//  TO DO LIST
 //  Make upper-cal-num disappear when not in use
 //  Make functioning calculator before visuals
 //  Make boolean value determining whther to edit upper or lower value, if operator is selected
@@ -21,8 +21,7 @@ function textContentUpdate(elem, val) {
 //     textContentUpdate()
 // }
 
-// Determines to change top or bottom calculator value
-function tOrB() {
+// Helps determine to change top or bottom calculator val
     let hasOps = (opVal) => {
         switch (opVal) {
             case "-":
@@ -36,17 +35,15 @@ function tOrB() {
                 return 404;
             }
         }
-        let trueOrFalse = hasOps(calOp)
-        return trueOrFalse
-}
 
 function cNumProcess(str) {
+    let isWhichOperand = hasOps(calOp)
     let parsedStr = parseInt(str)
-    // if (isTopOrBottom) {
-        textContentUpdate(upperCal, parsedStr)
-    // } else if (isTopOrBottom) {
-    //     textContentUpdate(lowerCal, parsedStr)
-    // }
+    console.log(isWhichOperand)
+//     if (isWhichOperand) {
+//     } else if (isWhichOperand) {
+    
+//     }
 }
 
 const operators = {
@@ -87,8 +84,8 @@ calcBtnContainer.addEventListener("click", (e) => {
     target = e.target;
     switch (target) {
         case zeroBtn:
-            
-            console.log(calNum1);            
+
+            console.log(calNum1);
             break;
         case oneBtn:
             calNum1 += 1;
@@ -142,9 +139,9 @@ calcBtnContainer.addEventListener("click", (e) => {
             console.log(target);
             break;
         case clearBtn:
-            calNum1 = 0;
+            calNum1 = "0";
             calOp = "";
-            calNum2 = 0;
+            calNum2 = "0";
             break;
         case equalsBtn:
             console.log(target);
