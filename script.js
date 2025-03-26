@@ -6,29 +6,27 @@
 
 let calNum1 = "0";
 let calOp = "";
-let calNum2 = "0";
+let calNum2 = "";
 
 const calScreen = document.querySelector(".cal-screen");
-const upperCal = document.querySelector(".cal-upper-content");
-const lowerCal = document.querySelector(".lower-cal-num");
-const visualCalOp = document.querySelector(".cal-op")
+const opOneSpan = document.querySelector(".first-cal-num");
+const opTwoSpan = document.querySelector(".sec-cal-num");
+const calOpSpan = document.querySelector(".cal-op")
 
-// Calculator value updater for html spans, so accurate values are displayed
 function textContentUpdate(elem, val) {
     elem.textContent = val;
 }
 
-// function calVisualUpdate() {
-//     textContentUpdate()
-// }
 
 function clearCal() {
     calNum1 = "0"
     calOp = ""
-    calNum2 = "0"
+    calNum2 = ""
+    textContentUpdate(opOneSpan, calNum1)
+    textContentUpdate(opTwoSpan, calNum2)
+    textContentUpdate(calOpSpan, calOp)
 }
 
-// Helps determine to change top or bottom calculator val
     let hasOps = (opVal) => {
         switch (opVal) {
             case "-":
@@ -43,14 +41,13 @@ function clearCal() {
             }
         }
 
-function cNumProcess(str) {
-    let isWhichOperand = hasOps(calOp)
-    let parsedStr = parseInt(str)
-    console.log(isWhichOperand)
-//     if (isWhichOperand) {
-//     } else if (isWhichOperand) {
+function cNumProcess() {
+    //let isWhichOperand = hasOps(calOp)
+    let parsedNum1 = parseInt(calNum1)
+    let parsedNum2 = parseInt(calNum2)
+    textContentUpdate(opOneSpan, parsedNum1)
+    textContentUpdate(opTwoSpan, parsedNum2)
     
-//     }
 }
 
 const operators = {
