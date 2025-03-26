@@ -2,7 +2,7 @@
 //  Make upper-cal-num disappear when not in use
 //  Make functioning calculator before visuals
 //  Make boolean value determining whther to edit upper or lower value, if operator is selected
-
+//  Make it so selected operand has underline
 
 let calNum1 = "0";
 let calOp = "";
@@ -27,19 +27,19 @@ function clearCal() {
     textContentUpdate(calOpSpan, calOp)
 }
 
-    let hasOps = (opVal) => {
-        switch (opVal) {
-            case "-":
-            case "+":
-            case "/":
-            case "*":
-                return true;
-            case "":
-                return false;
-            default:
-                return 404;
-            }
-        }
+    // let hasOps = (opVal) => {
+    //     switch (opVal) {
+    //         case "-":
+    //         case "+":
+    //         case "/":
+    //         case "*":
+    //             return true;
+    //         case "":
+    //             return false;
+    //         default:
+    //             return 404;
+    //         }
+    //     }
 
 function cNumProcess() {
     //let isWhichOperand = hasOps(calOp)
