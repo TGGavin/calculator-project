@@ -47,7 +47,7 @@ function cNumProcess() {
     let parsedNum2 = parseInt(calNum2)
     textContentUpdate(opOneSpan, parsedNum1)
     textContentUpdate(opTwoSpan, parsedNum2)
-    
+
 }
 
 const operators = {
@@ -63,6 +63,7 @@ function operation(operator, num, num2) {
 }
 
 // List of all calculator buttons
+const switchOperandBtn = document.querySelector(".switch-btn");
 const zeroBtn = document.querySelector(".zero-btn");
 const oneBtn = document.querySelector(".one-btn");
 const twoBtn = document.querySelector(".two-btn");
@@ -73,7 +74,6 @@ const sixBtn = document.querySelector(".six-btn");
 const svnBtn = document.querySelector(".svn-btn");
 const eightBtn = document.querySelector(".eight-btn");
 const nineBtn = document.querySelector(".nine-btn");
-const negateBtn = document.querySelector(".negate-btn");
 const decimalBtn = document.querySelector(".decimal-btn");
 const delBtn = document.querySelector(".del-btn");
 const divideBtn = document.querySelector(".divide-btn");
@@ -88,7 +88,6 @@ calcBtnContainer.addEventListener("click", (e) => {
     target = e.target;
     switch (target) {
         case zeroBtn:
-
             console.log(calNum1);
             break;
         case oneBtn:
@@ -121,7 +120,7 @@ calcBtnContainer.addEventListener("click", (e) => {
         case nineBtn:
             console.log(target);
             break;
-        case negateBtn:
+        case switchOperandBtn:
             console.log(target);
             break;
         case delBtn:
@@ -143,9 +142,7 @@ calcBtnContainer.addEventListener("click", (e) => {
             console.log(target);
             break;
         case clearBtn:
-            calNum1 = "0";
-            calOp = "";
-            calNum2 = "0";
+            clearCal()
             break;
         case equalsBtn:
             console.log(target);
