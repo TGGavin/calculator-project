@@ -11,15 +11,22 @@ let calNum2 = "0";
 const calScreen = document.querySelector(".cal-screen");
 const upperCal = document.querySelector(".cal-upper-content");
 const lowerCal = document.querySelector(".lower-cal-num");
+const visualCalOp = document.querySelector(".cal-op")
 
 // Calculator value updater for html spans, so accurate values are displayed
 function textContentUpdate(elem, val) {
     elem.textContent = val;
 }
 
-// function calSpanUp() {
+// function calVisualUpdate() {
 //     textContentUpdate()
 // }
+
+function clearCal() {
+    calNum1 = "0"
+    calOp = ""
+    calNum2 = "0"
+}
 
 // Helps determine to change top or bottom calculator val
     let hasOps = (opVal) => {
