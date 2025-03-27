@@ -2,7 +2,8 @@
 //  Make upper-cal-num disappear when not in use
 //  Make functioning calculator before visuals
 //  Make boolean value determining whther to edit upper or lower value, if operator is selected
-//  Make it so selected operand has underline
+//  Make function that has selected operand have underline, and, inverts whichOperand,
+//  Make a function that will make it so when deleting until only one character changes number to 0
 
 let calNum1 = "0";
 let calOp = "";
@@ -79,37 +80,34 @@ calcBtnContainer.addEventListener("click", (e) => {
     target = e.target;
     switch (target) {
         case zeroBtn:
-            console.log(calNum1);
+            cNumProcess(0)
             break;
         case oneBtn:
-            calNum1 += 1;
-            console.log(calNum1);
+            cNumProcess(1)
             break;
         case twoBtn:
-            calNum1 += 2
-            console.log(calNum1);
+            cNumProcess(2)
             break;
         case threeBtn:
-            calNum1 += 3
-            console.log(calNum1);
+            cNumProcess(3)
             break;
         case fourBtn:
-            console.log(target);
+            cNumProcess(4)
             break;
         case fiveBtn:
-            console.log(target);
+            cNumProcess(5)
             break;
         case sixBtn:
-            console.log(target);
+            cNumProcess(6)
             break;
         case svnBtn:
-            console.log(target);
+            cNumProcess(7)
             break;
         case eightBtn:
-            console.log(target);
+            cNumProcess(8)
             break;
         case nineBtn:
-            console.log(target);
+            cNumProcess(9)
             break;
         case switchOperandBtn:
             whichOperand = !whichOperand
