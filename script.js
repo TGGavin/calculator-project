@@ -27,22 +27,7 @@ function clearCal() {
     textContentUpdate(calOpSpan, calOp)
 }
 
-    // let hasOps = (opVal) => {
-    //     switch (opVal) {
-    //         case "-":
-    //         case "+":
-    //         case "/":
-    //         case "*":
-    //             return true;
-    //         case "":
-    //             return false;
-    //         default:
-    //             return 404;
-    //         }
-    //     }
-
 function cNumProcess() {
-    //let isWhichOperand = hasOps(calOp)
     let parsedNum1 = parseInt(calNum1)
     let parsedNum2 = parseInt(calNum2)
     textContentUpdate(opOneSpan, parsedNum1)
