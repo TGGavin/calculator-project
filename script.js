@@ -6,7 +6,7 @@
 
 let calNum1 = "0";
 let calOp = "";
-let calNum2 = "";
+let calNum2 = "0";
 
 const calScreen = document.querySelector(".cal-screen");
 const opOneSpan = document.querySelector(".first-cal-num");
@@ -27,11 +27,18 @@ function clearCal() {
     textContentUpdate(calOpSpan, calOp)
 }
 
-function cNumProcess() {
-    let parsedNum1 = parseInt(calNum1)
-    let parsedNum2 = parseInt(calNum2)
-    textContentUpdate(opOneSpan, parsedNum1)
-    textContentUpdate(opTwoSpan, parsedNum2)
+let whichOperand = true
+
+function cNumProcess(num) {
+    if (whichOperand) {
+        calNum1 += num
+        let parsedNum1 = parseInt(calNum1)
+        textContentUpdate(opOneSpan, parsedNum1)
+    } else if (!whichOperand) {
+        calNum2 += num
+        let parsedNum2 = parseInt(calNum2)
+        textContentUpdate(opTwoSpan, parsedNum2)
+    }
 
 }
 
@@ -40,7 +47,6 @@ const operators = {
     minus: (a, b) => a - b,
     multiply: (a, b) => a * b,
     divide: (a, b) => a / b
-    // add negate
 }
 
 function operation(operator, num, num2) {
@@ -106,7 +112,7 @@ calcBtnContainer.addEventListener("click", (e) => {
             console.log(target);
             break;
         case switchOperandBtn:
-            console.log(target);
+            whichOperand = !whichOperand
             break;
         case delBtn:
             console.log(target);
