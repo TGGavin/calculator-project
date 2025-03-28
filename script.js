@@ -4,7 +4,7 @@
 //  Make boolean value determining whther to edit upper or lower value, if operator is selected
 //  Make function that has selected operand have underline, and, inverts whichOperand,
 //  Make a function that will make it so when deleting until only one character changes number to 0
-
+//PARSEFLOAT
 let calNum1 = "0";
 let calOp = "";
 let calNum2 = "0";
@@ -33,11 +33,11 @@ let whichOperand = true
 function cNumProcess(num) {
     if (whichOperand) {
         calNum1 += num
-        let parsedNum1 = parseInt(calNum1)
+        let parsedNum1 = parseFloat(calNum1)
         textContentUpdate(opOneSpan, parsedNum1)
     } else if (!whichOperand) {
         calNum2 += num
-        let parsedNum2 = parseInt(calNum2)
+        let parsedNum2 = parseFloat(calNum2)
         textContentUpdate(opTwoSpan, parsedNum2)
     }
 
@@ -116,7 +116,7 @@ calcBtnContainer.addEventListener("click", (e) => {
             console.log(target);
             break;
         case decimalBtn:
-            console.log(target);
+            cNumProcess(".")
             break;
         case divideBtn:
             console.log(target);
