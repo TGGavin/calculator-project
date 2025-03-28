@@ -13,6 +13,7 @@ const calScreen = document.querySelector(".cal-screen");
 const opOneSpan = document.querySelector(".first-cal-num");
 const opTwoSpan = document.querySelector(".sec-cal-num");
 const calOpSpan = document.querySelector(".cal-op")
+const outputSpan = document.querySelector(".cal-output")
 
 function textContentUpdate(elem, val) {
     elem.textContent = val;
@@ -23,10 +24,13 @@ function clearCal() {
     calNum1 = "0"
     calOp = ""
     calNum2 = ""
+    whichOperand = true
+    textContentUpdate(outputSpan, "")
     textContentUpdate(opOneSpan, calNum1)
     textContentUpdate(opTwoSpan, calNum2)
     textContentUpdate(calOpSpan, calOp)
 }
+
 
 let whichOperand = true
 
@@ -40,7 +44,6 @@ function cNumProcess(num) {
         let parsedNum2 = parseFloat(calNum2)
         textContentUpdate(opTwoSpan, parsedNum2)
     }
-
 }
 
 const operators = {
@@ -52,6 +55,15 @@ const operators = {
 
 function operation(operator, num, num2) {
     return operators[operator](num, num2)
+}
+
+function result() {
+    if (calOp.length === 0) {
+        textContentUpdate(outputSpan, "Select operation")
+    } else {
+        let output = operation(calOp, parseFloat(calNum1), parseFloat(calNum2))
+        textContentUpdate(outputSpan, `= ${output}`)
+    }
 }
 
 // List of all calculator buttons
@@ -119,22 +131,26 @@ calcBtnContainer.addEventListener("click", (e) => {
             cNumProcess(".")
             break;
         case divideBtn:
-            console.log(target);
+            calOp = "/"
+            textContentUpdate(calOpSpan, calOp)
             break;
         case multiplyBtn:
-            console.log(target);
+            calOp = "*"
+            textContentUpdate(calOpSpan, calOp)
             break;
         case addBtn:
-            console.log(target);
+            calOp = "+"
+            textContentUpdate(calOpSpan, calOp)
             break;
         case subtractBtn:
-            console.log(target);
+            calOp = "-"
+            textContentUpdate(calOpSpan, calOp)
             break;
         case clearBtn:
             clearCal()
             break;
         case equalsBtn:
-            console.log(target);
+            result()
             break;
         // default:
     };

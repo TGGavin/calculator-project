@@ -43,4 +43,5 @@ font-size: 80px;
     width: 512px;
     border-bottom: solid 6px black;
     padding: 10px 4px 0px 4px;
+    min-height: 120px;
 }
