@@ -4,7 +4,7 @@
 //  Make boolean value determining whther to edit upper or lower value, if operator is selected
 //  Make function that has selected operand have underline, and, inverts whichOperand,
 //  Make a function that will make it so when deleting until only one character changes number to 0
-//PARSEFLOAT
+//  Have cNumprocess delete decimals if more than one exist within string
 let calNum1 = "0";
 let calOp = "";
 let calNum2 = "0";
@@ -44,10 +44,10 @@ function cNumProcess(num) {
 }
 
 const operators = {
-    add: (a, b) => a + b,
-    minus: (a, b) => a - b,
-    multiply: (a, b) => a * b,
-    divide: (a, b) => a / b
+    "+": (a, b) => a + b,
+    "-": (a, b) => a - b,
+    "*": (a, b) => a * b,
+    "/": (a, b) => a / b
 }
 
 function operation(operator, num, num2) {
