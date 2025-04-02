@@ -5,6 +5,8 @@
 //  Make function that has selected operand have underline, and, inverts whichOperand,
 //  Make a function that will make it so when deleting until only one character changes number to 0
 //  Have cNumprocess delete decimals if more than one exist within string
+//  Add more functions and reduce over specification
+
 let calNum1 = "0";
 let calOp = "";
 let calNum2 = "0";
@@ -23,26 +25,47 @@ function textContentUpdate(elem, val) {
 function clearCal() {
     calNum1 = "0"
     calOp = ""
-    calNum2 = ""
+    calNum2 = "0"
     whichOperand = true
     textContentUpdate(outputSpan, "")
     textContentUpdate(opOneSpan, calNum1)
-    textContentUpdate(opTwoSpan, calNum2)
+    textContentUpdate(opTwoSpan, "")
     textContentUpdate(calOpSpan, calOp)
 }
 
 
 let whichOperand = true
 
-function cNumProcess(num) {
+//setNum, or, selNum, selOperand
+function cNumProcess(val) {
     if (whichOperand) {
-        calNum1 += num
+        calNum1 += val
         let parsedNum1 = parseFloat(calNum1)
         textContentUpdate(opOneSpan, parsedNum1)
     } else if (!whichOperand) {
-        calNum2 += num
+        calNum2 += val
         let parsedNum2 = parseFloat(calNum2)
         textContentUpdate(opTwoSpan, parsedNum2)
+    }
+}
+
+function delLast() {
+    if (whichOperand) {
+        let arr = calNum1.split("")
+        if (arr.length > 1) {
+            arr.pop()
+        }
+        calNum1 = arr.join("")
+        let parsed = parseFloat(calNum1)
+        textContentUpdate(opOneSpan, parsed)
+    }   else if (!whichOperand) {
+        let arr = calNum2.split("")
+        if (arr.length > 1) {
+            arr.pop()
+        }        
+        calNum2 = arr.join("")
+        let parsed = parseFloat(calNum2)
+        textContentUpdate(opTwoSpan, parsed)
     }
 }
 
@@ -125,25 +148,29 @@ calcBtnContainer.addEventListener("click", (e) => {
             whichOperand = !whichOperand
             break;
         case delBtn:
-            console.log(target);
+            delLast()
             break;
         case decimalBtn:
             cNumProcess(".")
             break;
         case divideBtn:
             calOp = "/"
+            whichOperand = false
             textContentUpdate(calOpSpan, calOp)
             break;
         case multiplyBtn:
             calOp = "*"
+            whichOperand = false
             textContentUpdate(calOpSpan, calOp)
             break;
         case addBtn:
             calOp = "+"
+            whichOperand = false
             textContentUpdate(calOpSpan, calOp)
             break;
         case subtractBtn:
             calOp = "-"
+            whichOperand = false
             textContentUpdate(calOpSpan, calOp)
             break;
         case clearBtn:
