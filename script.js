@@ -1,7 +1,4 @@
 //  TO DO LIST
-//  Make upper-cal-num disappear when not in use
-//  Make functioning calculator before visuals
-//  Make boolean value determining whther to edit upper or lower value, if operator is selected
 //  Make function that has selected operand have underline, and, inverts whichOperand,
 //  Make a function that will make it so when deleting until only one character changes number to 0
 //  Have cNumprocess delete decimals if more than one exist within string
@@ -11,9 +8,12 @@ let calNum1 = "0";
 let calOp = "";
 let calNum2 = "0";
 
+let whichOperand = true
+
 const calScreen = document.querySelector(".cal-screen");
 const opOneSpan = document.querySelector(".first-cal-num");
 const opTwoSpan = document.querySelector(".sec-cal-num");
+
 const calOpSpan = document.querySelector(".cal-op")
 const outputSpan = document.querySelector(".cal-output")
 
@@ -26,7 +26,7 @@ function clearCal() {
     calNum1 = "0"
     calOp = ""
     calNum2 = "0"
-    whichOperand = true
+    whichOper(true)
     textContentUpdate(outputSpan, "")
     textContentUpdate(opOneSpan, calNum1)
     textContentUpdate(opTwoSpan, "")
@@ -34,7 +34,6 @@ function clearCal() {
 }
 
 
-let whichOperand = true
 
 //setNum, or, selNum, selOperand
 function cNumProcess(val) {
@@ -66,6 +65,19 @@ function delLast() {
         calNum2 = arr.join("")
         let parsed = parseFloat(calNum2)
         textContentUpdate(opTwoSpan, parsed)
+    }
+}
+
+
+
+function whichOper(boolean) {
+    whichOperand = boolean
+    if (whichOperand) {
+        opOneSpan.setAttribute("style", "text-decoration: underline;")
+        opTwoSpan.setAttribute("style", "text-decoration;")
+    } else if (!whichOperand) {
+        opOneSpan.setAttribute("style", "text-decoration;")
+        opTwoSpan.setAttribute("style", "text-decoration: underline;;")
     }
 }
 
@@ -145,7 +157,7 @@ calcBtnContainer.addEventListener("click", (e) => {
             cNumProcess(9)
             break;
         case switchOperandBtn:
-            whichOperand = !whichOperand
+            whichOper(!whichOperand)
             break;
         case delBtn:
             delLast()
@@ -155,22 +167,26 @@ calcBtnContainer.addEventListener("click", (e) => {
             break;
         case divideBtn:
             calOp = "/"
-            whichOperand = false
+            whichOper(false)
+            textContentUpdate(opTwoSpan, calNum2)
             textContentUpdate(calOpSpan, calOp)
             break;
         case multiplyBtn:
             calOp = "*"
-            whichOperand = false
+            whichOper(false)
+            textContentUpdate(opTwoSpan, calNum2)
             textContentUpdate(calOpSpan, calOp)
             break;
         case addBtn:
             calOp = "+"
-            whichOperand = false
+            whichOper(false)
+            textContentUpdate(opTwoSpan, calNum2)
             textContentUpdate(calOpSpan, calOp)
             break;
         case subtractBtn:
             calOp = "-"
-            whichOperand = false
+            whichOper(false)
+            textContentUpdate(opTwoSpan, calNum2)
             textContentUpdate(calOpSpan, calOp)
             break;
         case clearBtn:
