@@ -125,7 +125,7 @@ const equalsBtn = document.querySelector(".equal-btn");
 function operatorUpdate(op) {
     calOp = op
     let parsedNum = parseFloat(calNum2)
-    whichOp(!whichOperand)
+    whichOp(false)
     textContentUpdate(opTwoSpan, parsedNum)
     textContentUpdate(calOpSpan, calOp)
 }
