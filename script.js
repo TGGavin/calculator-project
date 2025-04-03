@@ -33,54 +33,6 @@ function clearCal() {
     textContentUpdate(calOpSpan, calOp)
 }
 
-
-
-//setNum, or, selNum, selOperand
-function cNumProcess(val) {
-    if (whichOperand) {
-        calNum1 += val
-        let parsedNum1 = parseFloat(calNum1)
-        textContentUpdate(opOneSpan, parsedNum1)
-    } else if (!whichOperand) {
-        calNum2 += val
-        let parsedNum2 = parseFloat(calNum2)
-        textContentUpdate(opTwoSpan, parsedNum2)
-    }
-}
-
-function delLast() {
-    if (whichOperand) {
-        let arr = calNum1.split("")
-        if (arr.length > 1) {
-            arr.pop()
-        }
-        calNum1 = arr.join("")
-        let parsed = parseFloat(calNum1)
-        textContentUpdate(opOneSpan, parsed)
-    }   else if (!whichOperand) {
-        let arr = calNum2.split("")
-        if (arr.length > 1) {
-            arr.pop()
-        }        
-        calNum2 = arr.join("")
-        let parsed = parseFloat(calNum2)
-        textContentUpdate(opTwoSpan, parsed)
-    }
-}
-
-
-
-function whichOp(boolean) {
-    whichOperand = boolean
-    if (whichOperand) {
-        opOneSpan.setAttribute("style", "text-decoration: underline;")
-        opTwoSpan.setAttribute("style", "text-decoration;")
-    } else if (!whichOperand) {
-        opOneSpan.setAttribute("style", "text-decoration;")
-        opTwoSpan.setAttribute("style", "text-decoration: underline;;")
-    }
-}
-
 const operators = {
     "+": (a, b) => a + b,
     "-": (a, b) => a - b,
@@ -92,14 +44,6 @@ function operation(operator, num, num2) {
     return operators[operator](num, num2)
 }
 
-function result() {
-    if (calOp.length === 0) {
-        textContentUpdate(outputSpan, "Select operation")
-    } else {
-        let output = operation(calOp, parseFloat(calNum1), parseFloat(calNum2))
-        textContentUpdate(outputSpan, `= ${output}`)
-    }
-}
 
 // List of all calculator buttons
 const switchOperandBtn = document.querySelector(".switch-btn");
@@ -122,6 +66,49 @@ const addBtn = document.querySelector(".add-btn");
 const clearBtn = document.querySelector(".clear-btn");
 const equalsBtn = document.querySelector(".equal-btn");
 
+function changeOperand(val) {
+    if (whichOperand) {
+        calNum1 += val
+        let parsedNum1 = parseFloat(calNum1)
+        textContentUpdate(opOneSpan, parsedNum1)
+    } else if (!whichOperand) {
+        calNum2 += val
+        let parsedNum2 = parseFloat(calNum2)
+        textContentUpdate(opTwoSpan, parsedNum2)
+    }
+}
+function delLast() {
+    if (whichOperand) {
+        let arr = calNum1.split("")
+        if (arr.length > 1) {
+            arr.pop()
+        }
+        calNum1 = arr.join("")
+        let parsed = parseFloat(calNum1)
+        textContentUpdate(opOneSpan, parsed)
+    }   else if (!whichOperand) {
+        let arr = calNum2.split("")
+        if (arr.length > 1) {
+            arr.pop()
+        }        
+        calNum2 = arr.join("")
+        let parsed = parseFloat(calNum2)
+        textContentUpdate(opTwoSpan, parsed)
+    }
+}
+
+function whichOp(boolean) {
+    whichOperand = boolean
+    if (whichOperand) {
+        opOneSpan.setAttribute("style", "text-decoration: underline;")
+        opTwoSpan.setAttribute("style", "text-decoration;")
+    } else if (!whichOperand) {
+        opOneSpan.setAttribute("style", "text-decoration;")
+        opTwoSpan.setAttribute("style", "text-decoration: underline;;")
+    }
+}
+
+
 function operatorUpdate(op) {
     calOp = op
     let parsedNum = parseFloat(calNum2)
@@ -130,39 +117,48 @@ function operatorUpdate(op) {
     textContentUpdate(calOpSpan, calOp)
 }
 
+function result() {
+    if (calOp.length === 0) {
+        textContentUpdate(outputSpan, "Select operation")
+    } else {
+        let output = operation(calOp, parseFloat(calNum1), parseFloat(calNum2))
+        textContentUpdate(outputSpan, `= ${output}`)
+    }
+}
+
 const calcBtnContainer = document.querySelector(".calc-btn-container");
 calcBtnContainer.addEventListener("click", (e) => {
     target = e.target;
     switch (target) {
         case zeroBtn:
-            cNumProcess(0)
+            changeOperand(0)
             break;
         case oneBtn:
-            cNumProcess(1)
+            changeOperand(1)
             break;
         case twoBtn:
-            cNumProcess(2)
+            changeOperand(2)
             break;
         case threeBtn:
-            cNumProcess(3)
+            changeOperand(3)
             break;
         case fourBtn:
-            cNumProcess(4)
+            changeOperand(4)
             break;
         case fiveBtn:
-            cNumProcess(5)
+            changeOperand(5)
             break;
         case sixBtn:
-            cNumProcess(6)
+            changeOperand(6)
             break;
         case svnBtn:
-            cNumProcess(7)
+            changeOperand(7)
             break;
         case eightBtn:
-            cNumProcess(8)
+            changeOperand(8)
             break;
         case nineBtn:
-            cNumProcess(9)
+            changeOperand(9)
             break;
         case switchOperandBtn:
             whichOp(!whichOperand)
@@ -171,7 +167,7 @@ calcBtnContainer.addEventListener("click", (e) => {
             delLast()
             break;
         case decimalBtn:
-            cNumProcess(".")
+            //
             break;
         case divideBtn:
             operatorUpdate("/")
