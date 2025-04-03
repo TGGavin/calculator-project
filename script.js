@@ -105,6 +105,7 @@ function whichOp(boolean) {
     } else if (!whichOperand) {
         opOneSpan.setAttribute("style", "text-decoration;")
         opTwoSpan.setAttribute("style", "text-decoration: underline;;")
+        textContentUpdate(opTwoSpan, parseFloat(calNum2))
     }
 }
 
