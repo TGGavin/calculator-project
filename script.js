@@ -122,6 +122,14 @@ const addBtn = document.querySelector(".add-btn");
 const clearBtn = document.querySelector(".clear-btn");
 const equalsBtn = document.querySelector(".equal-btn");
 
+function operatorUpdate(op) {
+    calOp = op
+    let parsedNum = parseFloat(calNum2)
+    whichOp(!whichOperand)
+    textContentUpdate(opTwoSpan, parsedNum)
+    textContentUpdate(calOpSpan, calOp)
+}
+
 const calcBtnContainer = document.querySelector(".calc-btn-container");
 calcBtnContainer.addEventListener("click", (e) => {
     target = e.target;
@@ -166,28 +174,16 @@ calcBtnContainer.addEventListener("click", (e) => {
             cNumProcess(".")
             break;
         case divideBtn:
-            calOp = "/"
-            whichOp(false)
-            textContentUpdate(opTwoSpan, calNum2)
-            textContentUpdate(calOpSpan, calOp)
+            operatorUpdate("/")
             break;
         case multiplyBtn:
-            calOp = "*"
-            whichOp(false)
-            textContentUpdate(opTwoSpan, calNum2)
-            textContentUpdate(calOpSpan, calOp)
+            operatorUpdate("*")
             break;
         case addBtn:
-            calOp = "+"
-            whichOp(false)
-            textContentUpdate(opTwoSpan, calNum2)
-            textContentUpdate(calOpSpan, calOp)
+            operatorUpdate("+")
             break;
         case subtractBtn:
-            calOp = "-"
-            whichOp(false)
-            textContentUpdate(opTwoSpan, calNum2)
-            textContentUpdate(calOpSpan, calOp)
+            operatorUpdate("-")
             break;
         case clearBtn:
             clearCal()
@@ -195,7 +191,6 @@ calcBtnContainer.addEventListener("click", (e) => {
         case equalsBtn:
             result()
             break;
-        // default:
     };
 
 });
