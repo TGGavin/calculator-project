@@ -26,7 +26,7 @@ function clearCal() {
     calNum1 = "0"
     calOp = ""
     calNum2 = "0"
-    whichOper(true)
+    whichOp(true)
     textContentUpdate(outputSpan, "")
     textContentUpdate(opOneSpan, calNum1)
     textContentUpdate(opTwoSpan, "")
@@ -70,7 +70,7 @@ function delLast() {
 
 
 
-function whichOper(boolean) {
+function whichOp(boolean) {
     whichOperand = boolean
     if (whichOperand) {
         opOneSpan.setAttribute("style", "text-decoration: underline;")
@@ -157,7 +157,7 @@ calcBtnContainer.addEventListener("click", (e) => {
             cNumProcess(9)
             break;
         case switchOperandBtn:
-            whichOper(!whichOperand)
+            whichOp(!whichOperand)
             break;
         case delBtn:
             delLast()
@@ -167,25 +167,25 @@ calcBtnContainer.addEventListener("click", (e) => {
             break;
         case divideBtn:
             calOp = "/"
-            whichOper(false)
+            whichOp(false)
             textContentUpdate(opTwoSpan, calNum2)
             textContentUpdate(calOpSpan, calOp)
             break;
         case multiplyBtn:
             calOp = "*"
-            whichOper(false)
+            whichOp(false)
             textContentUpdate(opTwoSpan, calNum2)
             textContentUpdate(calOpSpan, calOp)
             break;
         case addBtn:
             calOp = "+"
-            whichOper(false)
+            whichOp(false)
             textContentUpdate(opTwoSpan, calNum2)
             textContentUpdate(calOpSpan, calOp)
             break;
         case subtractBtn:
             calOp = "-"
-            whichOper(false)
+            whichOp(false)
             textContentUpdate(opTwoSpan, calNum2)
             textContentUpdate(calOpSpan, calOp)
             break;
