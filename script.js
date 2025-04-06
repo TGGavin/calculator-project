@@ -23,6 +23,19 @@ const calOpSpan = document.querySelector(".cal-op");
 const outputSpan = document.querySelector(".cal-output");
 
 
+let parseNum = (str) => {
+    return parseFloat(str);
+};
+
+function calNumRefresh() {
+    parsedNum1 = parseNum(calNum1);
+    parsedNum2 = parseNum(calNum2);
+};
+
+let parsedNum1 = 0;
+let parsedNum2 = 0;
+
+
 function textContentUpdate(elem, val) {
     elem.textContent = val;
 };
