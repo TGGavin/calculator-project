@@ -120,6 +120,7 @@ function operatorUpdate(op) {
 
 
 function result() {
+    whichOp(true)
     if (calOp.length === 0) {
         textContentUpdate(outputSpan, "Select operation");
     } else {
@@ -127,6 +128,25 @@ function result() {
         textContentUpdate(outputSpan, `= ${output}`);
     };
 };
+
+
+// placeholder. if more than one . then return nothing therefore not changing the string
+// function calStr(input) {}
+
+
+function showDecimal() {
+    if (whichOperand) {
+        let decimalIsLast = calNum1.endsWith(".")
+        if (decimalIsLast) {
+            textContentUpdate(opOneSpan, `${parsedNum1}.`)
+        }
+    } else if (!whichOperand) {
+        let decimalIsLast = calNum2.endsWith(".")
+        if (decimalIsLast) {
+            textContentUpdate(opTwoSpan, `${parsedNum2}.`)
+        }
+    }
+}
 
 
 // countChars counts the amount of (char) within the (str).
@@ -208,9 +228,11 @@ calcBtnContainer.addEventListener("click", (e) => {
             break;
         case delBtn:
             delLast();
+            showDecimal()
             break;
         case decimalBtn:
             changeOperand(".")
+            showDecimal()
             break;
         case divideBtn:
             operatorUpdate("/");
