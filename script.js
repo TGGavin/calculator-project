@@ -127,6 +127,22 @@ function result() {
     }
 }
 
+// countChars counts the amount of (char) within the (str).
+// (str) and (char) must be a string.
+// (char) must be a single letter.
+function countChars(str, char) {
+    charCount = 0
+
+    let arr = str.split("")
+    arr.map((c) => {
+        if (c === char) {
+            return ++charCount
+        }
+    })
+    
+    return charCount
+}
+
 const calcBtnContainer = document.querySelector(".calc-btn-container");
 calcBtnContainer.addEventListener("click", (e) => {
     target = e.target;
@@ -168,7 +184,7 @@ calcBtnContainer.addEventListener("click", (e) => {
             delLast()
             break;
         case decimalBtn:
-            //
+            //changeOperand(".")
             break;
         case divideBtn:
             operatorUpdate("/")
@@ -191,3 +207,6 @@ calcBtnContainer.addEventListener("click", (e) => {
     };
 
 });
+// make function to count "." amount
+// if "." amount equal to zero, then add "." also make sure to have it appear
+// if "." amount > 0, then return nothing
