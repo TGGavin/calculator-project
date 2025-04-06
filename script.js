@@ -2,8 +2,9 @@
 //  Have cNumprocess delete decimals if more than one exist within string
 //  Add more functions and reduce over specification
 //  Make function that ubiquitously updates the visuals of everything
-//  Add function that will parse
 //  Rework functions to reduce redundancy
+//  Make text shrink as length increases
+// Add function addinga a value to a string, make sure it can't have more than one zero before another number. do not let any more than one decimals be added.
 
 // make function to count "." amount
 // if "." amount equal to zero, then add "." also make sure to have it appear
@@ -45,6 +46,7 @@ function clearCal() {
     calNum1 = "0";
     calOp = "";
     calNum2 = "0";
+    calNumRefresh();
     whichOp(true);
     textContentUpdate(outputSpan, "");
     textContentUpdate(opOneSpan, calNum1);
@@ -68,11 +70,11 @@ function operation(operator, num, num2) {
 function changeOperand(val) {
     if (whichOperand) {
         calNum1 += val;
-        let parsedNum1 = parseFloat(calNum1);
+        calNumRefresh();
         textContentUpdate(opOneSpan, parsedNum1);
     } else if (!whichOperand) {
         calNum2 += val;
-        let parsedNum2 = parseFloat(calNum2);
+        calNumRefresh();
         textContentUpdate(opTwoSpan, parsedNum2);
     };
 };
@@ -85,16 +87,16 @@ function delLast() {
             arr.pop();
         }
         calNum1 = arr.join("");
-        let parsed = parseFloat(calNum1);
-        textContentUpdate(opOneSpan, parsed);
+        calNumRefresh();
+        textContentUpdate(opOneSpan, parsedNum1);
     }   else if (!whichOperand) {
         let arr = calNum2.split("");
         if (arr.length > 1) {
             arr.pop();
         };        
         calNum2 = arr.join("");
-        let parsed = parseFloat(calNum2);
-        textContentUpdate(opTwoSpan, parsed);
+        calNumRefresh();
+        textContentUpdate(opTwoSpan, parsedNum2);
     };
 };
 
@@ -107,18 +109,17 @@ function whichOp(boolean) {
     } else if (!whichOperand) {
         opOneSpan.setAttribute("style", "text-decoration;");
         opTwoSpan.setAttribute("style", "text-decoration: underline;;");
-        textContentUpdate(opTwoSpan, parseFloat(calNum2));
+        calNumRefresh();
+        textContentUpdate(opTwoSpan, parsedNum2);
     };
 };
 
 
-
-
 function operatorUpdate(op) {
     calOp = op;
-    let parsedNum = parseFloat(calNum2);
+    calNumRefresh();
     whichOp(false);
-    textContentUpdate(opTwoSpan, parsedNum);
+    textContentUpdate(opTwoSpan, parsedNum2);
     textContentUpdate(calOpSpan, calOp);
 };
 
@@ -214,7 +215,7 @@ calcBtnContainer.addEventListener("click", (e) => {
             delLast();
             break;
         case decimalBtn:
-            //changeOperand(".")
+            changeOperand(".")
             break;
         case divideBtn:
             operatorUpdate("/");
