@@ -44,28 +44,6 @@ function operation(operator, num, num2) {
     return operators[operator](num, num2)
 }
 
-
-// List of all calculator buttons
-const switchOperandBtn = document.querySelector(".switch-btn");
-const zeroBtn = document.querySelector(".zero-btn");
-const oneBtn = document.querySelector(".one-btn");
-const twoBtn = document.querySelector(".two-btn");
-const threeBtn = document.querySelector(".three-btn");
-const fourBtn = document.querySelector(".four-btn");
-const fiveBtn = document.querySelector(".five-btn");
-const sixBtn = document.querySelector(".six-btn");
-const svnBtn = document.querySelector(".svn-btn");
-const eightBtn = document.querySelector(".eight-btn");
-const nineBtn = document.querySelector(".nine-btn");
-const decimalBtn = document.querySelector(".decimal-btn");
-const delBtn = document.querySelector(".del-btn");
-const divideBtn = document.querySelector(".divide-btn");
-const multiplyBtn = document.querySelector(".multiply-btn");
-const subtractBtn = document.querySelector(".subtract-btn");
-const addBtn = document.querySelector(".add-btn");
-const clearBtn = document.querySelector(".clear-btn");
-const equalsBtn = document.querySelector(".equal-btn");
-
 function changeOperand(val) {
     if (whichOperand) {
         calNum1 += val
@@ -129,7 +107,7 @@ function result() {
 
 // countChars counts the amount of (char) within the (str).
 // (str) and (char) must be a string.
-// (char) must be a single letter.
+// (char) must be a single.
 function countChars(str, char) {
     charCount = 0
 
@@ -143,7 +121,31 @@ function countChars(str, char) {
     return charCount
 }
 
+
+// List of all calculator buttons
+const switchOperandBtn = document.querySelector(".switch-btn");
+const zeroBtn = document.querySelector(".zero-btn");
+const oneBtn = document.querySelector(".one-btn");
+const twoBtn = document.querySelector(".two-btn");
+const threeBtn = document.querySelector(".three-btn");
+const fourBtn = document.querySelector(".four-btn");
+const fiveBtn = document.querySelector(".five-btn");
+const sixBtn = document.querySelector(".six-btn");
+const svnBtn = document.querySelector(".svn-btn");
+const eightBtn = document.querySelector(".eight-btn");
+const nineBtn = document.querySelector(".nine-btn");
+const decimalBtn = document.querySelector(".decimal-btn");
+const delBtn = document.querySelector(".del-btn");
+const divideBtn = document.querySelector(".divide-btn");
+const multiplyBtn = document.querySelector(".multiply-btn");
+const subtractBtn = document.querySelector(".subtract-btn");
+const addBtn = document.querySelector(".add-btn");
+const clearBtn = document.querySelector(".clear-btn");
+const equalsBtn = document.querySelector(".equal-btn");
+
+
 const calcBtnContainer = document.querySelector(".calc-btn-container");
+
 calcBtnContainer.addEventListener("click", (e) => {
     target = e.target;
     switch (target) {
