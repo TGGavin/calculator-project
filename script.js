@@ -69,30 +69,28 @@ function assignValToCal(val) {
     let numArr2 = calNum2.split("")
 
     if (whichOperand) {
-        let decimalCount = countChars(calNum1, ".");
-        if (decimalCount > 0 && val === ".") {
+        let decimalCount = countChars(calNum1, ".");        
+        if (decimalCount > 0 && val === "."
+            || numArr1.length == 1 && val === 0
+            || numArr1.length == 16
+        ) {
             return;
-        }   else if (numArr1.length == 1 && val === 0) {
-            return;
-        }   else {
-            calNum1 += val;
-            calNumRefresh();
-            textContentUpdate(opOneSpan, parsedNum1);
-        };
+        }
+        calNum1 += val;
+        opOneSpan.textContent = calNum1
     } else if (!whichOperand) {
         let decimalCount = countChars(calNum2, ".");        
-        if (decimalCount > 0 && val === ".") {
+        if (decimalCount > 0 && val === "."
+            || numArr2.length == 1 && val === 0
+            || numArr2.length == 16
+        ) {
             return;
-        }   else if (numArr2.length == 1 && val === 0) {
-            return;
-        }   else {
-            calNum2 += val;
-            calNumRefresh();
-            textContentUpdate(opTwoSpan, parsedNum2);
-            //opTwoSpan.textContent = as(calNum2)
         }
+        calNum2 += val;
+        opTwoSpan.textContent = calNum2
     };
 };
+
 
 function delLast() {
     if (whichOperand) {
