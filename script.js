@@ -1,10 +1,11 @@
 //  TO DO LIST
-//  Have cNumprocess delete decimals if more than one exist within string
-//  Add more functions and reduce over specification
-//  Make function that ubiquitously updates the visuals of everything
 //  Rework functions to reduce redundancy
 //  Make text shrink as length increases
-// Add function addinga a value to a string, make sure it can't have more than one zero before another number. do not let any more than one decimals be added.
+//  Add function for adding a value to a string, make sure it can't have more than one zero before another number. do not let any more than one decimals be added.
+//  Make sure that if operand is unselected and ends with decimal that decimal is removed
+//  Have decimal delete if no number in front of it
+//  Should I make it so that result() defines the calNum1?
+//  Make a function that is if statement mixed with textContentUpdate and calNumRefresh
 
 // make function to count "." amount
 // if "." amount equal to zero, then add "." also make sure to have it appear
@@ -62,7 +63,7 @@ function operation(operator, num, num2) {
 };
 
 
-function changeOperand(val) {
+function assignValToCal(val) {
     if (whichOperand) {
         calNum1 += val;
         calNumRefresh();
@@ -73,7 +74,6 @@ function changeOperand(val) {
         textContentUpdate(opTwoSpan, parsedNum2);
     };
 };
-
 
 function delLast() {
     if (whichOperand) {
@@ -128,10 +128,6 @@ function result() {
         textContentUpdate(outputSpan, `= ${output}`);
     };
 };
-
-
-// placeholder. if more than one . then return nothing therefore not changing the string
-// function calStr(input) {}
 
 
 function showDecimal() {
@@ -194,34 +190,34 @@ calcBtnContainer.addEventListener("click", (e) => {
     target = e.target;
     switch (target) {
         case zeroBtn:
-            changeOperand(0);
+            assignValToCal(0);
             break;
         case oneBtn:
-            changeOperand(1);
+            assignValToCal(1);
             break;
         case twoBtn:
-            changeOperand(2);
+            assignValToCal(2);
             break;
         case threeBtn:
-            changeOperand(3);
+            assignValToCal(3);
             break;
         case fourBtn:
-            changeOperand(4);
+            assignValToCal(4);
             break;
         case fiveBtn:
-            changeOperand(5);
+            assignValToCal(5);
             break;
         case sixBtn:
-            changeOperand(6);
+            assignValToCal(6);
             break;
         case svnBtn:
-            changeOperand(7);
+            assignValToCal(7);
             break;
         case eightBtn:
-            changeOperand(8);
+            assignValToCal(8);
             break;
         case nineBtn:
-            changeOperand(9);
+            assignValToCal(9);
             break;
         case switchOperandBtn:
             whichOp(!whichOperand);
@@ -231,7 +227,7 @@ calcBtnContainer.addEventListener("click", (e) => {
             showDecimal()
             break;
         case decimalBtn:
-            changeOperand(".")
+            assignValToCal(".")
             showDecimal()
             break;
         case divideBtn:
