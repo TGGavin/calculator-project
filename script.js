@@ -6,6 +6,7 @@
 //  Have decimal delete if no number in front of it
 //  Should I make it so that result() defines the calNum1?
 //  Make a function that is if statement mixed with textContentUpdate and calNumRefresh
+//  if zero is infront of decimal show it
 
 // make function to count "." amount
 // if "." amount equal to zero, then add "." also make sure to have it appear
@@ -116,7 +117,6 @@ function whichOp(boolean) {
         opTwoSpan.setAttribute("style", "text-decoration: underline;;");
         calNumRefresh();
         textContentUpdate(opTwoSpan, parsedNum2);
-        showDecimal();
     };
 };
 
@@ -131,7 +131,7 @@ function operatorUpdate(op) {
 
 
 function result() {
-    whichOp(true)
+    whichOp(true);
     if (calOp.length === 0) {
         textContentUpdate(outputSpan, "Select operation");
     } else {
@@ -139,21 +139,6 @@ function result() {
         textContentUpdate(outputSpan, `= ${output}`);
     };
 };
-
-
-function showDecimal() {
-    if (whichOperand) {
-        let decimalIsLast = calNum1.endsWith(".")
-        if (decimalIsLast) {
-            textContentUpdate(opOneSpan, `${parsedNum1}.`)
-        }
-    } else if (!whichOperand) {
-        let decimalIsLast = calNum2.endsWith(".")
-        if (decimalIsLast) {
-            textContentUpdate(opTwoSpan, `${parsedNum2}.`)
-        }
-    }
-}
 
 
 // countChars counts the amount of (char) within the (str).
@@ -235,11 +220,9 @@ calcBtnContainer.addEventListener("click", (e) => {
             break;
         case delBtn:
             delLast();
-            showDecimal();
             break;
         case decimalBtn:
             assignValToCal(".")
-            showDecimal();
             break;
         case divideBtn:
             operatorUpdate("/");
