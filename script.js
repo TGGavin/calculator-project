@@ -65,13 +65,23 @@ function operation(operator, num, num2) {
 
 function assignValToCal(val) {
     if (whichOperand) {
-        calNum1 += val;
-        calNumRefresh();
-        textContentUpdate(opOneSpan, parsedNum1);
+        let decimalCount = countChars(calNum1, ".");
+        if (decimalCount > 0 && val === ".") {
+            return;
+        }   else {
+            calNum1 += val;
+            calNumRefresh();
+            textContentUpdate(opOneSpan, parsedNum1);
+        };
     } else if (!whichOperand) {
-        calNum2 += val;
-        calNumRefresh();
-        textContentUpdate(opTwoSpan, parsedNum2);
+        let decimalCount = countChars(calNum2, ".");
+        if (decimalCount > 0 && val === ".") {
+            return;
+        }   else {
+            calNum2 += val;
+            calNumRefresh();
+            textContentUpdate(opTwoSpan, parsedNum2);
+        }
     };
 };
 
@@ -106,6 +116,7 @@ function whichOp(boolean) {
         opTwoSpan.setAttribute("style", "text-decoration: underline;;");
         calNumRefresh();
         textContentUpdate(opTwoSpan, parsedNum2);
+        showDecimal();
     };
 };
 
@@ -224,11 +235,11 @@ calcBtnContainer.addEventListener("click", (e) => {
             break;
         case delBtn:
             delLast();
-            showDecimal()
+            showDecimal();
             break;
         case decimalBtn:
             assignValToCal(".")
-            showDecimal()
+            showDecimal();
             break;
         case divideBtn:
             operatorUpdate("/");
