@@ -65,9 +65,14 @@ function operation(operator, num, num2) {
 
 
 function assignValToCal(val) {
+    let numArr1 = calNum1.split("")
+    let numArr2 = calNum2.split("")
+
     if (whichOperand) {
         let decimalCount = countChars(calNum1, ".");
         if (decimalCount > 0 && val === ".") {
+            return;
+        }   else if (numArr1.length == 1 && val === 0) {
             return;
         }   else {
             calNum1 += val;
@@ -75,13 +80,16 @@ function assignValToCal(val) {
             textContentUpdate(opOneSpan, parsedNum1);
         };
     } else if (!whichOperand) {
-        let decimalCount = countChars(calNum2, ".");
+        let decimalCount = countChars(calNum2, ".");        
         if (decimalCount > 0 && val === ".") {
+            return;
+        }   else if (numArr2.length == 1 && val === 0) {
             return;
         }   else {
             calNum2 += val;
             calNumRefresh();
             textContentUpdate(opTwoSpan, parsedNum2);
+            //opTwoSpan.textContent = as(calNum2)
         }
     };
 };
