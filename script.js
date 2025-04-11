@@ -78,6 +78,9 @@ function assignValToCal(val) {
         }
         calNum1 += val;
         opOneSpan.textContent = calNum1
+        if (calNum1[1] !== ".") {
+            opOneSpan.textContent = hideChar(calNum1, "0")
+        }
     } else if (!whichOperand) {
         let decimalCount = countChars(calNum2, ".");        
         if (decimalCount > 0 && val === "."
@@ -88,8 +91,29 @@ function assignValToCal(val) {
         }
         calNum2 += val;
         opTwoSpan.textContent = calNum2
+        if (calNum2[1] !== ".") {
+            opTwoSpan.textContent = hideChar(calNum2, "0")
+        }
     };
 };
+
+
+function hideChar(str, item) {
+    let arr = str.split("")
+    let hasSpecifiedItem = arr.includes(item)
+
+    if (hasSpecifiedItem) {
+
+        let indexToHide = arr.indexOf(item);
+        
+        if (indexToHide > -1) {
+            arr.splice(indexToHide, 1);
+            return arr.join("")
+        }
+    }   else {
+        return console.log(`${item} is not within ${str}`)
+    }   
+}
 
 
 function delLast() {
