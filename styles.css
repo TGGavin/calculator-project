@@ -45,3 +45,7 @@ font-size: 80px;
     padding: 10px 4px 0px 4px;
     min-height: 120px;
 }
+
+.cal-output {
+    font-size: 44px;
+}
