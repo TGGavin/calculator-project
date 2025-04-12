@@ -72,7 +72,7 @@ function assignValToCal(val) {
         let decimalCount = countChars(calNum1, ".");        
         if (decimalCount > 0 && val === "."
             || numArr1.length == 1 && val === 0
-            || numArr1.length == 16
+            || numArr1.length == 17
         ) {
             return;
         }
@@ -85,7 +85,7 @@ function assignValToCal(val) {
         let decimalCount = countChars(calNum2, ".");        
         if (decimalCount > 0 && val === "."
             || numArr2.length == 1 && val === 0
-            || numArr2.length == 16
+            || numArr2.length == 17
         ) {
             return;
         }
@@ -100,19 +100,13 @@ function assignValToCal(val) {
 
 function hideChar(str, item) {
     let arr = str.split("")
-    let hasSpecifiedItem = arr.includes(item)
-
-    if (hasSpecifiedItem) {
-
-        let indexToHide = arr.indexOf(item);
+    let indexToHide = str.indexOf(item);
         
-        if (indexToHide > -1) {
-            arr.splice(indexToHide, 1);
-            return arr.join("")
-        }
-    }   else {
-        return console.log(`${item} is not within ${str}`)
-    }   
+    if (indexToHide > -1) {
+        arr.splice(indexToHide, item.length);
+        return arr.join("")
+    }
+
 }
 
 
