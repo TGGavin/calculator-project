@@ -1,17 +1,3 @@
-//  TO DO LIST
-//  Rework functions to reduce redundancy
-//  Make text shrink as length increases
-//  Add function for adding a value to a string, make sure it can't have more than one zero before another number. do not let any more than one decimals be added.
-//  Make sure that if operand is unselected and ends with decimal that decimal is removed
-//  Have decimal delete if no number in front of it
-//  Should I make it so that result() defines the calNum1?
-//  Make a function that is if statement mixed with textContentUpdate and calNumRefresh
-//  if zero is infront of decimal show it
-
-// make function to count "." amount
-// if "." amount equal to zero, then add "." also make sure to have it appear
-// if "." amount > 0, then return nothing
-
 let calNum1 = "0";
 let calOp = "";
 let calNum2 = "0";
@@ -34,21 +20,16 @@ let parsedNum1 = 0;
 let parsedNum2 = 0;
 
 
-function textContentUpdate(elem, val) {
-    elem.textContent = val;
-};
-
-
 function clearCal() {
     calNum1 = "0";
     calOp = "";
     calNum2 = "0";
     calNumRefresh();
     whichOp(true);
-    textContentUpdate(outputSpan, "");
-    textContentUpdate(opOneSpan, calNum1);
-    textContentUpdate(opTwoSpan, "");
-    textContentUpdate(calOpSpan, calOp);
+    outputSpan.textContent = "";
+    opOneSpan.textContent = calNum1;
+    opTwoSpan.textContent = "";
+    calOpSpan.textContent = calOp;
 };
 
 
@@ -118,7 +99,7 @@ function delLast() {
         }
         calNum1 = arr.join("");
         calNumRefresh();
-        textContentUpdate(opOneSpan, parsedNum1);
+        opOneSpan.textContent = parsedNum1;
     }   else if (!whichOperand) {
         let arr = calNum2.split("");
         if (arr.length > 1) {
@@ -126,7 +107,7 @@ function delLast() {
         };        
         calNum2 = arr.join("");
         calNumRefresh();
-        textContentUpdate(opTwoSpan, parsedNum2);
+        opTwoSpan.textContent = parsedNum2;
     };
 };
 
@@ -140,7 +121,7 @@ function whichOp(boolean) {
         opOneSpan.setAttribute("style", "text-decoration;");
         opTwoSpan.setAttribute("style", "text-decoration: underline;;");
         calNumRefresh();
-        textContentUpdate(opTwoSpan, parsedNum2);
+        opTwoSpan.textContent = parsedNum2;
     };
 };
 
@@ -149,25 +130,25 @@ function operatorUpdate(op) {
     calOp = op;
     calNumRefresh();
     whichOp(false);
-    textContentUpdate(opTwoSpan, parsedNum2);
-    textContentUpdate(calOpSpan, calOp);
+    opTwoSpan.textContent = parsedNum2;
+    calOpSpan.textContent = calOp;
 };
 
 
 function result() {
     whichOp(true);
     if (calOp.length === 0) {
-        textContentUpdate(outputSpan, "Select operation");
+        outputSpan.textContent = "Select Mathmatical Operator"
     } else {
         let output = operation(calOp, parseFloat(calNum1), parseFloat(calNum2));
-        textContentUpdate(outputSpan, `= ${output}`);
+        outputSpan.textContent = `= ${output}`
     };
 };
 
 
 // countChars counts the amount of (char) within the (str).
 // (str) and (char) must be a string.
-// (char) must be a single.
+// (char) must be a single character.
 function countChars(str, char) {
     charCount = 0;
 
