@@ -91,7 +91,7 @@ function hideChar(str, item) {
 }
 
 
-function delLast() {
+function del() {
     if (whichOperand) {
         let arr = calNum1.split("");
         if (arr.length > 1) {
@@ -224,7 +224,7 @@ calcBtnContainer.addEventListener("click", (e) => {
             whichOp(!whichOperand);
             break;
         case delBtn:
-            delLast();
+            del();
             break;
         case decimalBtn:
             assignValToCal(".")
