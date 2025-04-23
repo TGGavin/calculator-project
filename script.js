@@ -79,18 +79,6 @@ function assignValToCal(val) {
 };
 
 
-function hideChar(str, item) {
-    let arr = str.split("")
-    let indexToHide = str.indexOf(item);
-        
-    if (indexToHide > -1) {
-        arr.splice(indexToHide, item.length);
-        return arr.join("")
-    }
-
-}
-
-
 function del() {
     if (whichOperand) {
         let arr = calNum1.split("");
@@ -160,6 +148,17 @@ function countChars(str, char) {
     });
     
     return charCount;
+}
+
+function hideChar(str, item) {
+    let arr = str.split("")
+    let indexToHide = str.indexOf(item);
+        
+    if (indexToHide > -1) {
+        arr.splice(indexToHide, item.length);
+        return arr.join("")
+    }
+
 }
 
 
