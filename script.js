@@ -28,8 +28,8 @@ function clearCal() {
     whichOp(true);
     outputSpan.textContent = "";
     opOneSpan.textContent = calNum1;
-    opTwoSpan.textContent = "";
-    calOpSpan.textContent = calOp;
+    opTwoSpan.textContent = calNum2;
+    calOpSpan.textContent = "_";
 };
 
 
@@ -45,59 +45,65 @@ function operation(operator, num, num2) {
 };
 
 
-function assignValToCal(val) {
-    let numArr1 = calNum1.split("")
-    let numArr2 = calNum2.split("")
+function addDigit(calNum, val) {
+    let oldVal = calNum
 
+    let decimalCount = countChars(calNum, ".")
+
+    if (decimalCount > 0 && val === "." ||
+        calNum.length > 17 ||
+        calNum.length === 1 && val === 0) {
+        return oldVal
+    } 
+
+    return calNum + val
+};
+
+function addToCal(num) {
     if (whichOperand) {
-        let decimalCount = countChars(calNum1, ".");        
-        if (decimalCount > 0 && val === "."
-            || numArr1.length == 1 && val === 0
-            || numArr1.length == 17
-        ) {
-            return;
-        }
-        calNum1 += val;
-        opOneSpan.textContent = calNum1
-        if (calNum1[1] !== ".") {
-            opOneSpan.textContent = hideChar(calNum1, "0")
-        }
+        calNum1 = addDigit(calNum1, num)
     } else if (!whichOperand) {
-        let decimalCount = countChars(calNum2, ".");        
-        if (decimalCount > 0 && val === "."
-            || numArr2.length == 1 && val === 0
-            || numArr2.length == 17
-        ) {
-            return;
-        }
-        calNum2 += val;
-        opTwoSpan.textContent = calNum2
-        if (calNum2[1] !== ".") {
-            opTwoSpan.textContent = hideChar(calNum2, "0")
-        }
-    };
-};
+        calNum2 = addDigit(calNum2, num)
+    }
+    updateCalSpans()
+}
 
+function updateTxt(str, element) {
+    if (str[1] !== ".") {
+        element.textContent = hideChar(str, "0")
+    } else
+    element.textContent = str
+    
+    if (str.length === 1 && str[0] === "0") {
+        element.textContent = 0
+    }
+}
 
-function del() {
+function updateCalSpans() {
     if (whichOperand) {
-        let arr = calNum1.split("");
+        updateTxt(calNum1, opOneSpan)
+    }   else if (!whichOperand) {
+        updateTxt(calNum2, opTwoSpan)
+    }
+}
+
+//make it so 0 shows if only number
+function del(str) {
+        let arr = str.split("");
         if (arr.length > 1) {
             arr.pop();
         }
-        calNum1 = arr.join("");
-        calNumRefresh();
-        opOneSpan.textContent = parsedNum1;
-    }   else if (!whichOperand) {
-        let arr = calNum2.split("");
-        if (arr.length > 1) {
-            arr.pop();
-        };        
-        calNum2 = arr.join("");
-        calNumRefresh();
-        opTwoSpan.textContent = parsedNum2;
+        return arr.join("");
     };
-};
+    
+    function delFromCal() {
+        if (whichOperand) {
+            calNum1 = del(calNum1)
+        }   else if (!whichOperand) {
+            calNum2 = del(calNum2)
+        }
+        updateCalSpans()
+}
 
 
 function whichOp(boolean) {
@@ -108,8 +114,6 @@ function whichOp(boolean) {
     } else if (!whichOperand) {
         opOneSpan.setAttribute("style", "text-decoration;");
         opTwoSpan.setAttribute("style", "text-decoration: underline;;");
-        calNumRefresh();
-        opTwoSpan.textContent = parsedNum2;
     };
 };
 
@@ -190,43 +194,43 @@ calcBtnContainer.addEventListener("click", (e) => {
     target = e.target;
     switch (target) {
         case zeroBtn:
-            assignValToCal(0);
+            addToCal(0);
             break;
         case oneBtn:
-            assignValToCal(1);
+            addToCal(1);
             break;
         case twoBtn:
-            assignValToCal(2);
+            addToCal(2);
             break;
         case threeBtn:
-            assignValToCal(3);
+            addToCal(3);
             break;
         case fourBtn:
-            assignValToCal(4);
+            addToCal(4);
             break;
         case fiveBtn:
-            assignValToCal(5);
+            addToCal(5);
             break;
         case sixBtn:
-            assignValToCal(6);
+            addToCal(6);
             break;
         case svnBtn:
-            assignValToCal(7);
+            addToCal(7);
             break;
         case eightBtn:
-            assignValToCal(8);
+            addToCal(8);
             break;
         case nineBtn:
-            assignValToCal(9);
+            addToCal(9);
+            break;
+        case decimalBtn:
+            addToCal(".")
             break;
         case switchOperandBtn:
             whichOp(!whichOperand);
             break;
         case delBtn:
-            del();
-            break;
-        case decimalBtn:
-            assignValToCal(".")
+            delFromCal();
             break;
         case divideBtn:
             operatorUpdate("/");
