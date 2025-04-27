@@ -117,6 +117,14 @@ function whichOp(boolean) {
     };
 };
 
+opOneSpan.addEventListener("click", () => {
+    whichOp(true)
+})
+
+opTwoSpan.addEventListener("click", () => {
+    whichOp(false)
+})
+
 
 function operatorUpdate(op) {
     calOp = op;
