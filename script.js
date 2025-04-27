@@ -137,13 +137,13 @@ function operatorUpdate(op) {
 
 function result() {
     whichOp(true);
+    opOneSpan.textContent = parseFloat(calNum1)
     if (calOp.length === 0) {
         outputSpan.textContent = "Select Mathmatical Operator"
     } else {
         let output = operation(calOp, parseFloat(calNum1), parseFloat(calNum2));
         outputSpan.textContent = `= ${output}`
         calNum1 = output;
-        opOneSpan.textContent = calNum1;
     };
 };
 
