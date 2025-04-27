@@ -7,53 +7,54 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <div class="calc-container">
-        <div class="cal-screen">
-            <div class="cal-upper-content">
-                <span class="first-cal-num" style="text-decoration: underline;">0</span>
-                <span class="cal-op">_</span>
-                <span class="sec-cal-num">0</span>
-            </div>
-            <span class="cal-output"></span>
-        </div>
-        
-        <div class="calc-btn-container">
-        
-            <div class="digit-btn-display">
-                <div>
-                    <button class="svn-btn">7</button>
-                    <button class="eight-btn">8</button>
-                    <button class="nine-btn">9</button>
+    <div class="outer-border">
+            <div class="calc-container">
+                <div class="cal-screen">
+                    <div class="cal-upper-content">
+                        <span class="first-cal-num" style="text-decoration: underline;">0</span>
+                        <span class="cal-op">_</span>
+                        <span class="sec-cal-num">0</span>
+                    </div>
+                    <span class="cal-output"></span>
                 </div>
-                <div>
-                    <button class="four-btn">4</button>
-                    <button class="five-btn">5</button>
-                    <button class="six-btn">6</button>
+                
+                <div class="calc-btn-container">
+                    
+                    <div class="digit-btn-display">
+                        <div class="first-div">
+                            <button class="svn-btn top-row">7</button>
+                            <button class="eight-btn top-row">8</button>
+                            <button class="nine-btn top-row">9</button>
+                        </div>
+                        <div class="sec-div">
+                            <button class="four-btn second-row">4</button>
+                            <button class="five-btn second-row">5</button>
+                            <button class="six-btn second-row">6</button>
+                        </div>
+                        <div class="third-div">
+                            <button class="one-btn third-row">1</button>
+                            <button class="two-btn third-row">2</button>
+                            <button class="three-btn third-row">3</button>
+                        </div>
+                        <div class="bottom-div">
+                            <button class="switch-btn bottom-row" style="font-size: 30px">Switch Operand</button>
+                            <button class="zero-btn bottom-row">0</button>
+                            <button class="decimal-btn bottom-row">.</button>
+                        </div>
+                    </div>
+                    
+                    <div class="opera-btn-display">
+                        <button class="clear-btn">C</button>
+                        <button class="del-btn"><img class="del-svg" src="svg/delete-svgrepo-com.svg"></button>
+                        <button class="divide-btn">/</button>
+                        <button class="multiply-btn">*</button>
+                        <button class="subtract-btn">-</button>
+                        <button class="add-btn">+</button>
+                        <button class="equal-btn">=</button>
+                    </div>
                 </div>
-                <div>
-                    <button class="one-btn">1</button>
-                    <button class="two-btn">2</button>
-                    <button class="three-btn">3</button>
-                </div>
-                <div>
-                    <button class="switch-btn" style="font-size: 30px">Switch Operand</button>
-                    <button class="zero-btn">0</button>
-                    <button class="decimal-btn">.</button>
-                </div>
-            </div>
-
-            <div class="opera-btn-display">
-                <button class="clear-btn">C</button>
-                <button class="del-btn">Del</button>
-                <button class="divide-btn">/</button>
-                <button class="multiply-btn">*</button>
-                <button class="subtract-btn">-</button>
-                <button class="add-btn">+</button>
-                <button class="equal-btn">=</button>
-            </div>
         </div>
     </div>
-        
-    <script src="script.js"></script>
-</body>
-</html>
+        <script src="script.js"></script>
+    </body>
+    </html>

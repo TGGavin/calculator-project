@@ -180,6 +180,7 @@ const eightBtn = document.querySelector(".eight-btn");
 const nineBtn = document.querySelector(".nine-btn");
 const decimalBtn = document.querySelector(".decimal-btn");
 const delBtn = document.querySelector(".del-btn");
+const delSvg = document.querySelector(".del-svg")
 const divideBtn = document.querySelector(".divide-btn");
 const multiplyBtn = document.querySelector(".multiply-btn");
 const subtractBtn = document.querySelector(".subtract-btn");
@@ -230,6 +231,9 @@ calcBtnContainer.addEventListener("click", (e) => {
             whichOp(!whichOperand);
             break;
         case delBtn:
+            delFromCal();
+            break;
+        case delSvg:
             delFromCal();
             break;
         case divideBtn:

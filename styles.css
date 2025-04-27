@@ -1,5 +1,5 @@
 .calc-container {
-    border: solid black 12px;
+    border: solid #CDC1FF 12px;
     display: flex;
     flex-direction: column;
     width: min-content;
@@ -16,22 +16,44 @@
     justify-content: center;
 }
 
+button {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: white;
+    margin: 8px;
+    border: transparent;
+
+}
+
+button:hover {
+    background: color-mix(in srgb-linear, red 13%, violet 75%) !important;
+    color: blueviolet;
+    cursor: pointer;
+}
+
 .digit-btn-display > div > button {    
 height: 124px;
 width: 130px;
 font-size: 80px;
+border-radius: 100%;
+/* margin: 8px; */
 }
 
 .opera-btn-display {
     display: flex;
     flex-direction: column;
+    border-left: solid #CDC1FF 6px;
+    background-color: #FFFED3;
 }
 
 .opera-btn-display > button {
-    width: 130px;
+    width: 99px;
     height: 100%;
     font-size: 50px;
+    border-radius: 12px;
+    background-color: #BBE9FF;
+    color: #FFFED3;
 }
+
 
 .cal-screen {
     display: flex;
@@ -40,12 +62,73 @@ font-size: 80px;
     align-items: flex-end;
     font-size: 50px;
     height: auto;
-    width: 512px;
-    border-bottom: solid 6px black;
+    width: 100%;
+    border-bottom: solid 6px #CDC1FF;
     padding: 10px 4px 0px 4px;
     min-height: 120px;
 }
 
 .cal-output {
     font-size: 44px;
+}
+
+.cal-upper-content {
+    margin: 8px;
+}
+
+.digit-btn-display > div {
+    gap: 10px;
+}
+
+.outer-border {
+    width: fit-content;
+    border: #A594F9 solid 18px;
+    border-radius: 34px;
+    justify-self: center;
+}
+
+.first-div {
+    background-color: #F52549;
+}
+
+.sec-div {
+    background-color: #CB9DF0;
+}
+
+.third-div {
+    background-color: #ff508c;
+}
+
+.bottom-div {
+    background-color: #FFFED3;
+}
+
+.top-row {
+    background-color: #fcbac0;
+    color: #F52549;
+}
+
+.second-row {
+    background: #673AB7;
+    color: #CB9DF0;
+}
+
+.third-row {
+    background: #CB9DF0;
+    color: #ff508c;
+}
+
+.bottom-row {
+    background: #ff508c;
+    color: #FFFED3
+}
+
+.del-svg {
+    width: 70px;
+}
+
+.del-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
