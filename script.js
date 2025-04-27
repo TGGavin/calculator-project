@@ -41,7 +41,8 @@ const operators = {
 };
 
 function operation(operator, num, num2) {
-    if (operator === "/" && num2 === 0) {
+    if (operator === "/" && num2 === 0 ||
+        calNum2 === "0") {
         return;
     }
     return operators[operator](num, num2);
@@ -156,11 +157,10 @@ function result() {
 
 
 // second parameter dictates the amount of decimals
-
 function roundDownDecimal(number, decimals) {
     let multiplier = Math.pow(10, decimals);
     return Math.floor(number * multiplier) / multiplier;
-  }
+}
 
 // countChars counts the amount of (char) within the (str).
 // (str) and (char) must be a string.
