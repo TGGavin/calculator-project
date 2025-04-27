@@ -140,8 +140,9 @@ function result() {
         outputSpan.textContent = "You know you can't divide by zero. Right?"
         return
        }
-        outputSpan.textContent = `= ${output}`
-        calNum1 = output;
+       let rounded = roundDownDecimal(output, 4)
+        outputSpan.textContent = `= ${rounded}`
+        calNum1 = rounded;
     };
 };
 
