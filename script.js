@@ -155,6 +155,13 @@ function result() {
 };
 
 
+// second parameter dictates the amount of decimals
+
+function roundDownDecimal(number, decimals) {
+    let multiplier = Math.pow(10, decimals);
+    return Math.floor(number * multiplier) / multiplier;
+  }
+
 // countChars counts the amount of (char) within the (str).
 // (str) and (char) must be a string.
 // (char) must be a single character.
