@@ -142,6 +142,8 @@ function result() {
     } else {
         let output = operation(calOp, parseFloat(calNum1), parseFloat(calNum2));
         outputSpan.textContent = `= ${output}`
+        calNum1 = output;
+        opOneSpan.textContent = calNum1;
     };
 };
 
