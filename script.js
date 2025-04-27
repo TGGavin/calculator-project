@@ -11,20 +11,10 @@ const opTwoSpan = document.querySelector(".sec-cal-num");
 const calOpSpan = document.querySelector(".cal-op");
 const outputSpan = document.querySelector(".cal-output");
 
-function calNumRefresh() {
-    parsedNum1 = parseFloat(calNum1);
-    parsedNum2 = parseFloat(calNum2);
-};
-
-let parsedNum1 = 0;
-let parsedNum2 = 0;
-
-
 function clearCal() {
     calNum1 = "0";
     calOp = "";
     calNum2 = "0";
-    calNumRefresh();
     whichOp(true);
     outputSpan.textContent = "";
     opOneSpan.textContent = calNum1;
@@ -93,6 +83,7 @@ function updateCalSpans() {
 
 //make it so 0 shows if only number
 function del(str) {
+        str = str.toString()
         let arr = str.split("");
         if (arr.length > 1) {
             arr.pop();
@@ -132,9 +123,8 @@ opTwoSpan.addEventListener("click", () => {
 
 function operatorUpdate(op) {
     calOp = op;
-    calNumRefresh();
     whichOp(false);
-    opTwoSpan.textContent = parsedNum2;
+    opTwoSpan.textContent = parseFloat(calNum2);
     calOpSpan.textContent = calOp;
 };
 
@@ -167,7 +157,7 @@ function roundDownDecimal(number, decimals) {
 // (char) must be a single character.
 function countChars(str, char) {
     charCount = 0;
-
+    str = str.toString()
     let arr = str.split("");
     arr.map((c) => {
         if (c === char) {
@@ -179,6 +169,7 @@ function countChars(str, char) {
 }
 
 function hideChar(str, item) {
+    str = str.toString()
     let arr = str.split("")
     let indexToHide = str.indexOf(item);
         
