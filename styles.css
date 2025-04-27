@@ -89,7 +89,7 @@ border-radius: 100%;
 }
 
 .first-div {
-    background-color: #F52549;
+    background-color: #673AB7;
 }
 
 .sec-div {
@@ -101,12 +101,12 @@ border-radius: 100%;
 }
 
 .bottom-div {
-    background-color: #FFFED3;
+    background-color: #CB9DF0;
 }
 
 .top-row {
-    background-color: #fcbac0;
-    color: #F52549;
+    background-color: #CB9DF0;
+    color: #673AB7;
 }
 
 .second-row {
@@ -121,7 +121,7 @@ border-radius: 100%;
 
 .bottom-row {
     background: #ff508c;
-    color: #FFFED3
+    color: #CB9DF0;
 }
 
 .del-svg {
