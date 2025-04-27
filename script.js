@@ -41,6 +41,9 @@ const operators = {
 };
 
 function operation(operator, num, num2) {
+    if (operator === "/" && num2 === 0) {
+        return;
+    }
     return operators[operator](num, num2);
 };
 
@@ -142,6 +145,10 @@ function result() {
         outputSpan.textContent = "Select Mathmatical Operator"
     } else {
         let output = operation(calOp, parseFloat(calNum1), parseFloat(calNum2));
+       if (output === undefined) {
+        outputSpan.textContent = "You know you can't divide by zero. Right?"
+        return
+       }
         outputSpan.textContent = `= ${output}`
         calNum1 = output;
     };
