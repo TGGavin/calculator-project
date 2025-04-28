@@ -123,14 +123,14 @@ opTwoSpan.addEventListener("click", () => {
 
 function operatorUpdate(op) {
     calOp = op;
-    whichOp(false);
+    // whichOp(false);
     opTwoSpan.textContent = parseFloat(calNum2);
     calOpSpan.textContent = calOp;
 };
 
 
 function result() {
-    whichOp(true);
+    // whichOp(true);
     opOneSpan.textContent = parseFloat(calNum1)
     if (calOp.length === 0) {
         outputSpan.textContent = "Select Mathmatical Operator"
@@ -140,9 +140,9 @@ function result() {
         outputSpan.textContent = "You know you can't divide by zero. Right?"
         return
        }
-       let rounded = roundDownDecimal(output, 4)
+       let rounded = roundDownDecimal(output, 3)
         outputSpan.textContent = `= ${rounded}`
-        calNum1 = rounded;
+        calNum1 = rounded.toString();
     };
 };
 
@@ -271,5 +271,88 @@ calcBtnContainer.addEventListener("click", (e) => {
             result();
             break;
     };
+
+
+    //issue: 
+    // idea preventDefault for the keys
+    // idea make it so the calculator is targeted on page startup so that pressing the keys works immediately
+    // when pressing any key it will fire 17 or so times
+    document.addEventListener("keydown", (e) => {
+        key = e.key
+        if (e.repeat) {
+            return;
+        }
+        console.log(key)
+        switch (key) {
+            case ".":
+                addToCal(".");
+                break;
+            case "0":
+                addToCal(0);
+                break;
+            case "1":
+                addToCal(1);
+                break;
+            case "2":
+                addToCal(2);
+                break;
+            case "3":
+                addToCal(3);
+                break;
+            case "4":
+                addToCal(4);
+                break;
+            case "5":
+                addToCal(5);
+                break;
+            case "6":
+                addToCal(6);
+                break;
+            case "7":
+                addToCal(7);
+                break;
+            case "8":
+                addToCal(8);
+                break;
+            case "9":
+                addToCal(9);
+                break;
+            case "s":
+                whichOp(!whichOperand);
+                break;
+            case "Enter":
+                result();
+                break;
+            case "Backspace":
+                delFromCal();
+                break;
+            case "Delete":
+                delFromCal();
+                break;
+            case "-":
+                operatorUpdate("-")
+                break;
+            case "=":
+                result();
+                break;
+            case "+":
+                operatorUpdate("+")
+                break;
+            case "c":
+                clearCal()
+                break;
+            case "/":
+                operatorUpdate("/")
+                break;
+            case "*":
+                operatorUpdate("*")
+                break;
+            case "x":
+                operatorUpdate("*")
+                break;
+
+            
+        }
+    })
 
 });
