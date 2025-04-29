@@ -66,6 +66,8 @@ border-radius: 100%;
     border-bottom: solid 6px #CDC1FF;
     padding: 10px 4px 0px 4px;
     min-height: 120px;
+    background: #A594F9;
+    color: #FFFED3;
 }
 
 .cal-output {
