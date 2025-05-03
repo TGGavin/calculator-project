@@ -137,6 +137,11 @@ border-radius: 100%;
 }
 
 .first-cal-num,
-.sec-cal-num {
+.sec-cal-num,
+.prev-num {
     cursor: pointer;
+}
+
+.prev-num {
+    font-size: 26px;
 }
