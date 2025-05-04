@@ -308,7 +308,7 @@ calcBtnContainer.addEventListener("click", (e) => {
             result();
             break;
     };
-
+});
 
     //issue: 
     // idea preventDefault for the keys
@@ -394,4 +394,3 @@ calcBtnContainer.addEventListener("click", (e) => {
                 break;
         };
     });
-});
