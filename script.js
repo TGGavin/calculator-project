@@ -12,14 +12,19 @@ const calOpSpan = document.querySelector(".cal-op");
 const outputSpan = document.querySelector(".cal-output");
 
 function clearCal() {
+    
+    calOutput = []
     calNum1 = "0";
     calOp = "";
     calNum2 = "0";
+    
     whichOp(true);
+    
     outputSpan.textContent = "";
     opOneSpan.textContent = calNum1;
     opTwoSpan.textContent = calNum2;
     calOpSpan.textContent = "_";
+    prevUpdate();
 };
 
 
@@ -39,66 +44,67 @@ function operation(operator, num, num2) {
 };
 
 
-function addDigit(calNum, val) {
-    let oldVal = calNum
+function addDigit(str, val) {
+    let oldVal = str;
 
-    let decimalCount = countChars(calNum, ".")
+    let decimalCount = countChars(str, ".");
 
     if (decimalCount > 0 && val === "." ||
-        calNum.length > 17 ||
-        calNum.length === 1 && val === 0) {
-        return oldVal
+        str.length > 17 ||
+        str.length === 1 && val === 0) {
+        return oldVal;
     } 
 
-    return calNum + val
+    return str + val;
 };
 
 function addToCal(num) {
     if (whichOperand) {
-        calNum1 = addDigit(calNum1, num)
+        calNum1 = addDigit(calNum1, num);
     } else if (!whichOperand) {
-        calNum2 = addDigit(calNum2, num)
+        calNum2 = addDigit(calNum2, num);
     }
-    updateCalSpans()
+    updateCalSpans();
 }
 
 function updateTxt(str, element) {
     if (str[1] !== ".") {
-        element.textContent = hideChar(str, "0")
+        element.textContent = hideChar(str, "0");
     } else
-    element.textContent = str
+    element.textContent = str;
     
     if (str.length === 1 && str[0] === "0") {
-        element.textContent = 0
-    }
-}
+        element.textContent = 0;
+    };
+};
 
 function updateCalSpans() {
     if (whichOperand) {
-        updateTxt(calNum1, opOneSpan)
+        updateTxt(calNum1, opOneSpan);
     }   else if (!whichOperand) {
-        updateTxt(calNum2, opTwoSpan)
-    }
-}
+        updateTxt(calNum2, opTwoSpan);
+    };
+};
 
 //make it so 0 shows if only number
 function del(str) {
-        str = str.toString()
+        str = str.toString();
         let arr = str.split("");
         if (arr.length > 1) {
             arr.pop();
         }
+        // updateCalSpans()
         return arr.join("");
     };
     
     function delFromCal() {
         if (whichOperand) {
-            calNum1 = del(calNum1)
+            calNum1 = del(calNum1);
         }   else if (!whichOperand) {
-            calNum2 = del(calNum2)
+            calNum2 = del(calNum2);
         }
-        updateCalSpans()
-}
+        updateCalSpans();
+};
 
 
 function whichOp(boolean) {
@@ -113,38 +119,69 @@ function whichOp(boolean) {
 };
 
 opOneSpan.addEventListener("click", () => {
-    whichOp(true)
+    whichOp(true);
 })
 
 opTwoSpan.addEventListener("click", () => {
-    whichOp(false)
+    whichOp(false);
 })
 
 
 function operatorUpdate(op) {
-    calOp = op;
     // whichOp(false);
+    calOp = op;
     opTwoSpan.textContent = parseFloat(calNum2);
     calOpSpan.textContent = calOp;
 };
 
+let calOutput = [];
 
 function result() {
-    // whichOp(true);
-    opOneSpan.textContent = parseFloat(calNum1)
     if (calOp.length === 0) {
-        outputSpan.textContent = "Select Mathmatical Operator"
-    } else {
+        outputSpan.textContent = "Choose your Operator!";
+        return;
+    }
         let output = operation(calOp, parseFloat(calNum1), parseFloat(calNum2));
-       if (output === undefined) {
-        outputSpan.textContent = "You know you can't divide by zero. Right?"
-        return
-       }
-       let rounded = roundDownDecimal(output, 3)
-        outputSpan.textContent = `= ${rounded}`
-        calNum1 = rounded.toString();
+        //let rounded = roundDownDecimal(output, 4).toString()
+
+        //console.log(rounded)
+        let op = `0${output}`
+                
+        if (output === undefined) {
+        outputSpan.textContent = "You know you can't divide by zero. Right?";
+        return;
+        };
+        
+        outputSpan.textContent = `= ${output}`;
+        calNum1 = op; 
+        opOneSpan.textContent = parseFloat(op);
+        calOutput.push(op);
+
+        prevUpdate();
+};
+
+//idea make it possible to go revert past the second most recent index
+const prevSpan = document.querySelector(".prev-num");
+let prevNum = "0";
+
+function prevUpdate() {
+    if (calOutput.length > 1) {
+        prevNum = calOutput[calOutput.length - 2];
+
+        prevSpan.textContent = `[${parseFloat(prevNum)}]`;
+    } else if (calOutput.length < 1) {
+        prevSpan.textContent = "[0]";
     };
 };
+
+prevSpan.addEventListener("click", () => {
+    if (calOutput.length > 1) {
+        calOutput.pop();
+        calNum1 = prevNum;
+        opOneSpan.textContent = parseFloat(calNum1);
+    };
+    prevUpdate();
+});
 
 
 // second parameter dictates the amount of decimals
@@ -158,7 +195,7 @@ function roundDownDecimal(number, decimals) {
 // (char) must be a single character.
 function countChars(str, char) {
     charCount = 0;
-    str = str.toString()
+    str = str.toString();
     let arr = str.split("");
     arr.map((c) => {
         if (c === char) {
@@ -170,13 +207,13 @@ function countChars(str, char) {
 }
 
 function hideChar(str, item) {
-    str = str.toString()
-    let arr = str.split("")
+    str = str.toString();
+    let arr = str.split("");
     let indexToHide = str.indexOf(item);
         
     if (indexToHide > -1) {
         arr.splice(indexToHide, item.length);
-        return arr.join("")
+        return arr.join("");
     }
 
 }
@@ -278,11 +315,13 @@ calcBtnContainer.addEventListener("click", (e) => {
     // idea make it so the calculator is targeted on page startup so that pressing the keys works immediately
     // when pressing any key it will fire 17 or so times
     document.addEventListener("keydown", (e) => {
-        key = e.key
-        if (e.repeat) {
-            return;
+        
+        key = e.key;
+
+        if (key === "Tab") {
+            e.preventDefault()
         }
-        console.log(key)
+
         switch (key) {
             case ".":
                 addToCal(".");
@@ -317,7 +356,7 @@ calcBtnContainer.addEventListener("click", (e) => {
             case "9":
                 addToCal(9);
                 break;
-            case "s":
+            case "Tab":
                 whichOp(!whichOperand);
                 break;
             case "Enter":
@@ -350,9 +389,6 @@ calcBtnContainer.addEventListener("click", (e) => {
             case "x":
                 operatorUpdate("*")
                 break;
-
-            
-        }
-    })
-
+        };
+    });
 });
