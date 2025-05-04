@@ -313,12 +313,15 @@ calcBtnContainer.addEventListener("click", (e) => {
     //issue: 
     // idea preventDefault for the keys
     // idea make it so the calculator is targeted on page startup so that pressing the keys works immediately
-    // when pressing any key it will fire 17 or so times
+    // when pressing any key it will fire the amount of times you click any button
     document.addEventListener("keydown", (e) => {
         
         key = e.key;
 
-        if (key === "Tab") {
+        if (key === "Tab" ||
+            key === " " ||
+            key === "Enter"
+        ) {
             e.preventDefault()
         }
 
