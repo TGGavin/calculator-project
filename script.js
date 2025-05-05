@@ -394,3 +394,8 @@ calcBtnContainer.addEventListener("click", (e) => {
                 break;
         };
     });
+
+    const collBtn = document.querySelector(".collapse-btn")
+    const infoContent = document.querySelector(".info-content")
+
+    let showCollapsible = false; 
