@@ -145,3 +145,8 @@ border-radius: 100%;
 .prev-num {
     font-size: 26px;
 }
+
+ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
