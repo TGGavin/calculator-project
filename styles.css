@@ -150,3 +150,16 @@ ul {
     list-style-type: none;
     padding-left: 0px;
 }
+
+.collapse-btn {
+    background-color: slategrey; 
+    border: solid black 2px;
+    font-size: 23px;
+    width: 632px;
+    margin: 0px;
+}    
+
+.collapse-btn:hover {
+    background-color: rgb(48, 48, 48) !important;
+    color: white !important;
+}
