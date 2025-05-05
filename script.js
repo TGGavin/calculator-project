@@ -1,7 +1,9 @@
+//  Used for displaying values, aswell as, for calculator functions
 let calNum1 = "0";
 let calOp = "";
 let calNum2 = "0";
 
+//  helps decide which calNum will be effected by any calculator function
 let whichOperand = true;
 
 const calScreen = document.querySelector(".cal-screen");
@@ -11,6 +13,7 @@ const opTwoSpan = document.querySelector(".sec-cal-num");
 const calOpSpan = document.querySelector(".cal-op");
 const outputSpan = document.querySelector(".cal-output");
 
+//  Resets any values that would be edited in process of using the calculator
 function clearCal() {
     
     calOutput = []
@@ -58,12 +61,14 @@ function addDigit(str, val) {
     return str + val;
 };
 
+//  Using whichOperand as the boolean, decides which of the two calculator operands are added to
 function addToCal(num) {
     if (whichOperand) {
         calNum1 = addDigit(calNum1, num);
     } else if (!whichOperand) {
         calNum2 = addDigit(calNum2, num);
     }
+    //  Visully upddates the calculator values
     updateCalSpans();
 }
 
@@ -86,17 +91,17 @@ function updateCalSpans() {
     };
 };
 
-//make it so 0 shows if only number
+// Deletes the most recent item in an array or string
 function del(str) {
         str = str.toString();
         let arr = str.split("");
         if (arr.length > 1) {
             arr.pop();
         }
-        // updateCalSpans()
         return arr.join("");
     };
     
+    //  Decides which operand to delete from
     function delFromCal() {
         if (whichOperand) {
             calNum1 = del(calNum1);
@@ -107,6 +112,7 @@ function del(str) {
 };
 
 
+// Depending on the whichOperand value, indicates which operand is currently going to be edited
 function whichOp(boolean) {
     whichOperand = boolean;
     if (whichOperand) {
@@ -118,40 +124,42 @@ function whichOp(boolean) {
     };
 };
 
+//  Both event handlers, allow clicking on the calculator operand itself to switch to it
 opOneSpan.addEventListener("click", () => {
     whichOp(true);
 })
-
 opTwoSpan.addEventListener("click", () => {
     whichOp(false);
 })
 
-
+//  Updates the value, and visual of which operator is selected
 function operatorUpdate(op) {
-    // whichOp(false);
     calOp = op;
     opTwoSpan.textContent = parseFloat(calNum2);
     calOpSpan.textContent = calOp;
 };
 
+
+//  the Array of previous and current calculations, until it is cleared by the clear function
 let calOutput = [];
 
+// Takes the value given by the operation function and refines it for visual representation, aswell as, variably 
 function result() {
     if (calOp.length === 0) {
         outputSpan.textContent = "Choose your Operator!";
         return;
     }
         let output = operation(calOp, parseFloat(calNum1), parseFloat(calNum2));
-        //let rounded = roundDownDecimal(output, 4).toString()
 
-        //console.log(rounded)
         let op = `0${output}`
                 
+        //  If the user has not selected any operator, it alerts them
         if (output === undefined) {
         outputSpan.textContent = "You know you can't divide by zero. Right?";
         return;
         };
         
+        //  Shows the calculation output, and adds to the array of calculations
         outputSpan.textContent = `= ${output}`;
         calNum1 = op; 
         opOneSpan.textContent = parseFloat(op);
@@ -160,20 +168,23 @@ function result() {
         prevUpdate();
 };
 
-//idea make it possible to go revert past the second most recent index
+
 const prevSpan = document.querySelector(".prev-num");
 let prevNum = "0";
 
+// Defines the new previous number value, and updates the visuals for it
 function prevUpdate() {
+    //  If statement of greater than 1 is so, that a NaN doesn't get added and bug the calc
     if (calOutput.length > 1) {
         prevNum = calOutput[calOutput.length - 2];
 
         prevSpan.textContent = `[${parseFloat(prevNum)}]`;
-    } else if (calOutput.length < 1) {
+    } else if (calOutput.length === 1) {
         prevSpan.textContent = "[0]";
     };
 };
 
+//  if user clicks the previous value it reverts to it, and clears the previously current value
 prevSpan.addEventListener("click", () => {
     if (calOutput.length > 1) {
         calOutput.pop();
@@ -206,6 +217,7 @@ function countChars(str, char) {
     return charCount;
 }
 
+//  Hides a Character yet keeps the original value the same
 function hideChar(str, item) {
     str = str.toString();
     let arr = str.split("");
@@ -241,9 +253,9 @@ const addBtn = document.querySelector(".add-btn");
 const clearBtn = document.querySelector(".clear-btn");
 const equalsBtn = document.querySelector(".equal-btn");
 
-
 const calcBtnContainer = document.querySelector(".calc-btn-container");
 
+//  Event handler for which button was clicked on the calcualtor
 calcBtnContainer.addEventListener("click", (e) => {
     target = e.target;
     switch (target) {
@@ -310,10 +322,7 @@ calcBtnContainer.addEventListener("click", (e) => {
     };
 });
 
-    //issue: 
-    // idea preventDefault for the keys
-    // idea make it so the calculator is targeted on page startup so that pressing the keys works immediately
-    // when pressing any key it will fire the amount of times you click any button
+    //  Event handler for which key was pressed corresponding to the calculator
     document.addEventListener("keydown", (e) => {
         
         key = e.key;
@@ -398,8 +407,10 @@ calcBtnContainer.addEventListener("click", (e) => {
     const collBtn = document.querySelector(".collapse-btn")
     const infoContent = document.querySelector(".info-content")
 
+    //  Boolean val to determine whether or not to show extra info
     let showCollapsible = false; 
 
+    // Click event handler to show or hide the extra information text
     collBtn.addEventListener("click", () => {
         showCollapsible = !showCollapsible
 
