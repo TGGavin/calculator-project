@@ -146,16 +146,39 @@ border-radius: 100%;
     font-size: 26px;
 }
 
+.info-container {
+    justify-self: center;
+    width: 1000px;
+    border: solid black 2px;
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+
+.info-content {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+    font-size: 22px;
+    width: 100%;
+}
+
 ul {
     list-style-type: none;
     padding-left: 0px;
+    margin: 0px;
 }
+
+ul > li {
+    margin-bottom: 8px;
+}
+
+
 
 .collapse-btn {
     background-color: slategrey; 
     border: solid black 2px;
     font-size: 23px;
-    width: 632px;
+    width: 100%;
     margin: 0px;
 }    
 
