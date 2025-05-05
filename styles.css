@@ -155,7 +155,7 @@ border-radius: 100%;
 }
 
 .info-content {
-    display: flex;
+    display: none;
     justify-content: center;
     margin-top: 12px;
     font-size: 22px;
