@@ -399,3 +399,13 @@ calcBtnContainer.addEventListener("click", (e) => {
     const infoContent = document.querySelector(".info-content")
 
     let showCollapsible = false; 
+
+    collBtn.addEventListener("click", () => {
+        showCollapsible = !showCollapsible
+
+        if (showCollapsible) {
+            infoContent.style.display = "flex"
+        } else if (!showCollapsible) {
+            infoContent.style.display = "none"
+        }
+    });
